@@ -1,22 +1,40 @@
 const globalTranslations = {
   en: {
     brandNote: "We are here to help you with your taxes and your business",
-    navServices: "Services",
-    navProcess: "Process",
+    navServices: "Home",
+    navProcess: "This service",
     navFaq: "FAQ",
     navContact: "Contact",
     footerText: "Bilingual support for taxes, bookkeeping, and business formation.",
     floatingWhatsapp: "WhatsApp",
+    serviceContactEyebrow: "Need help with your case?",
+    serviceContactTitle: "Tell us what you need and we will help you choose the next step with more clarity.",
+    serviceContactText: "If you are ready to ask questions or want to understand what documents to review first, write to us and we will guide you in English or Spanish.",
+    serviceContactEmail: "Email: yctaxservicecorp@gmail.com",
+    serviceContactInstagram: "Instagram: @yctaxservice",
+    serviceContactBackHome: "Back to home",
+    serviceTrust1: "Clear response",
+    serviceTrust2: "Bilingual support",
+    serviceTrust3: "Practical guidance",
     whatsappMessage: "Hello, I would like more information about your services. I need guidance with my case.",
   },
   es: {
     brandNote: "Aqui estamos para ayudarte con tus taxes y tu negocio",
-    navServices: "Servicios",
-    navProcess: "Proceso",
+    navServices: "Inicio",
+    navProcess: "Este servicio",
     navFaq: "FAQ",
     navContact: "Contacto",
     footerText: "Apoyo bilingue para taxes, bookkeeping y apertura de empresa.",
     floatingWhatsapp: "WhatsApp",
+    serviceContactEyebrow: "Necesitas ayuda con tu caso?",
+    serviceContactTitle: "Cuentanos que necesitas y te ayudamos a decidir el siguiente paso con mas claridad.",
+    serviceContactText: "Si ya quieres hacer preguntas o entender que documentos revisar primero, escribenos y te orientamos en ingles o espanol.",
+    serviceContactEmail: "Email: yctaxservicecorp@gmail.com",
+    serviceContactInstagram: "Instagram: @yctaxservice",
+    serviceContactBackHome: "Volver al inicio",
+    serviceTrust1: "Respuesta clara",
+    serviceTrust2: "Atencion bilingue",
+    serviceTrust3: "Orientacion practica",
     whatsappMessage: "Hola, quisiera mas informacion sobre sus servicios. Necesito orientacion con mi caso.",
   },
 };
@@ -323,6 +341,78 @@ const whatsappLinks = document.querySelectorAll(".whatsapp-link");
 const whatsappNumber = "19293203899";
 const pageKey = document.body.dataset.servicePage;
 
+function ensureServicePageStructure() {
+  const detailsSection = document.querySelector(".services-section");
+  const faqSection = document.querySelector(".faq-section");
+  const main = document.querySelector("main");
+
+  if (detailsSection) {
+    detailsSection.id = "details";
+  }
+
+  if (faqSection) {
+    faqSection.id = "faq";
+  }
+
+  if (!main || document.getElementById("contact")) {
+    return;
+  }
+
+  const contactSection = document.createElement("section");
+  contactSection.className = "contact-section service-contact-section is-visible";
+  contactSection.id = "contact";
+  contactSection.innerHTML = `
+    <div class="contact-copy">
+      <p class="eyebrow" data-global="serviceContactEyebrow"></p>
+      <h2 data-global="serviceContactTitle"></h2>
+      <p data-global="serviceContactText"></p>
+      <div class="contact-cards">
+        <a class="whatsapp-link contact-card-primary" href="#" target="_blank" rel="noreferrer">WhatsApp: +1 (929) 320-3899</a>
+        <a href="mailto:yctaxservicecorp@gmail.com" data-global="serviceContactEmail"></a>
+        <a href="https://www.instagram.com/yctaxservice/" target="_blank" rel="noreferrer" data-global="serviceContactInstagram"></a>
+      </div>
+      <div class="contact-reassurance">
+        <span data-global="serviceTrust1"></span>
+        <span data-global="serviceTrust2"></span>
+        <span data-global="serviceTrust3"></span>
+      </div>
+    </div>
+    <div class="contact-form service-contact-panel">
+      <p class="panel-label" data-global="serviceContactEyebrow"></p>
+      <p class="hero-text" data-global="serviceContactText"></p>
+      <div class="hero-actions">
+        <a class="button button-primary whatsapp-link" href="#" target="_blank" rel="noreferrer">WhatsApp</a>
+        <a class="button button-secondary" href="index.html" data-global="serviceContactBackHome"></a>
+      </div>
+    </div>
+  `;
+
+  main.appendChild(contactSection);
+
+  const secondaryCta = document.querySelector(".service-page-copy .button-secondary");
+  if (secondaryCta) {
+    secondaryCta.setAttribute("href", "#contact");
+  }
+}
+
+function updateServiceNavigation(language) {
+  const dictionary = globalTranslations[language];
+  const navLinks = Array.from(document.querySelectorAll(".site-nav a"));
+
+  if (navLinks.length < 4) {
+    return;
+  }
+
+  navLinks[0].setAttribute("href", "index.html");
+  navLinks[0].textContent = dictionary.navServices;
+  navLinks[1].setAttribute("href", "#details");
+  navLinks[1].textContent = dictionary.navProcess;
+  navLinks[2].setAttribute("href", "#faq");
+  navLinks[2].textContent = dictionary.navFaq;
+  navLinks[3].setAttribute("href", "#contact");
+  navLinks[3].textContent = dictionary.navContact;
+}
+
 function detectLanguage() {
   const savedLanguage = localStorage.getItem("yc-tax-language");
   if (savedLanguage && globalTranslations[savedLanguage]) {
@@ -343,6 +433,10 @@ function updateWhatsAppLinks(language) {
 }
 
 function applyLanguage(language, persist = true) {
+  if (!pageContent[pageKey] || !globalTranslations[language]) {
+    return;
+  }
+
   const globalDictionary = globalTranslations[language];
   const pageDictionary = pageContent[pageKey][language];
 
@@ -381,6 +475,8 @@ function applyLanguage(language, persist = true) {
     }
   });
 
+  updateServiceNavigation(language);
+
   languageButtons.forEach((button) => {
     button.classList.toggle("is-active", button.dataset.lang === language);
   });
@@ -410,6 +506,13 @@ if (menuToggle && siteNav) {
     const expanded = menuToggle.getAttribute("aria-expanded") === "true";
     menuToggle.setAttribute("aria-expanded", String(!expanded));
     siteNav.classList.toggle("is-open");
+  });
+
+  siteNav.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      menuToggle.setAttribute("aria-expanded", "false");
+      siteNav.classList.remove("is-open");
+    });
   });
 }
 
@@ -453,4 +556,5 @@ revealItems.forEach((item) => {
   }
 });
 
+ensureServicePageStructure();
 applyLanguage(currentLanguage, false);
