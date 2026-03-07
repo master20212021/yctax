@@ -22,6 +22,48 @@
   </head>
   <body class="print-cover-body">
     <main class="print-cover-page">
+      <div class="cover-toolbar screen-only">
+        <div class="cover-toolbar-copy">
+          <p class="print-panel-label">Premium editable cover</p>
+          <p class="cover-toolbar-note">Completa la información del cliente y luego imprime desde esta misma página.</p>
+        </div>
+        <button class="cover-print-button" type="button" data-print-cover disabled>Complete required fields to print</button>
+      </div>
+
+      <section class="editable-control-panel screen-only">
+        <div class="editable-control-intro">
+          <h1>Portada premium editable</h1>
+          <p>Llena los datos una sola vez. La portada se actualiza en tiempo real y queda lista para imprimir en carpeta física.</p>
+        </div>
+        <div class="editable-control-grid">
+          <label>
+            <span>Nombre del cliente</span>
+            <input type="text" data-sync-target="editableClientName" data-required="true" placeholder="Ej. Maria Rodriguez" />
+          </label>
+          <label>
+            <span>Año fiscal</span>
+            <input type="text" data-sync-target="editableTaxYear" data-required="true" placeholder="2025" />
+          </label>
+          <label>
+            <span>Fecha</span>
+            <input type="text" data-sync-target="editableDate" data-required="true" placeholder="03/07/2026" />
+          </label>
+          <label>
+            <span>Preparado por</span>
+            <input type="text" data-sync-target="editablePreparedBy" placeholder="YC Tax Service Corp" />
+          </label>
+          <label>
+            <span>Tipo de expediente</span>
+            <input type="text" data-sync-target="editableFileType" placeholder="Tax Return Package" />
+          </label>
+          <label>
+            <span>Referencia interna</span>
+            <input type="text" data-sync-target="editableReference" placeholder="Client ID o código interno" />
+          </label>
+        </div>
+        <p class="editable-status" data-edit-status>Faltan datos obligatorios para imprimir: nombre del cliente, año fiscal y fecha.</p>
+      </section>
+
       <section class="print-cover-card">
         <div class="print-cover-topbar"></div>
 
@@ -35,7 +77,10 @@
               <p class="print-brand-note">Tax Advisory • Bookkeeping • Payroll • Business Formation</p>
             </div>
           </div>
-          <div class="print-cover-badge">Client File / Expediente del Cliente</div>
+          <div class="print-cover-badge-wrap">
+            <div class="print-cover-badge">Premium folder cover</div>
+            <div class="print-cover-badge print-cover-badge-subtle">Client File / Expediente del Cliente</div>
+          </div>
         </header>
 
         <section class="print-cover-hero">
@@ -45,29 +90,38 @@
             Documento de presentación para entregar declaraciones, soportes y expedientes impresos con una imagen
             profesional, ordenada y fácil de identificar.
           </p>
+          <div class="print-cover-hero-tags">
+            <span class="editable-value is-empty" data-edit-id="editableFileType" data-default="Premium Presentation">Premium Presentation</span>
+            <span>Ready to Print</span>
+            <span>Bilingual Format</span>
+          </div>
         </section>
 
         <section class="print-cover-grid">
           <article class="print-info-panel print-info-panel-primary">
             <p class="print-panel-label">Prepared for / Preparado para</p>
             <div class="print-line-group">
-              <div class="print-line-item">
+              <div class="print-line-item print-line-item-filled">
                 <span>Client Name / Nombre del cliente</span>
-                <div class="print-fill-line"></div>
+                <strong class="editable-value is-empty" data-edit-id="editableClientName" data-default="Client Name">Client Name</strong>
               </div>
               <div class="print-line-item two-column">
                 <div>
                   <span>Tax Year / Año fiscal</span>
-                  <div class="print-fill-line"></div>
+                  <strong class="editable-value is-empty" data-edit-id="editableTaxYear" data-default="0000">0000</strong>
                 </div>
                 <div>
                   <span>Date / Fecha</span>
-                  <div class="print-fill-line"></div>
+                  <strong class="editable-value is-empty" data-edit-id="editableDate" data-default="MM/DD/YYYY">MM/DD/YYYY</strong>
                 </div>
               </div>
-              <div class="print-line-item">
+              <div class="print-line-item print-line-item-filled">
                 <span>Prepared by / Preparado por</span>
-                <div class="print-fill-line"></div>
+                <strong class="editable-value is-empty" data-edit-id="editablePreparedBy" data-default="YC Tax Service Corp">YC Tax Service Corp</strong>
+              </div>
+              <div class="print-line-item print-line-item-filled">
+                <span>Reference / Referencia</span>
+                <strong class="editable-value is-empty" data-edit-id="editableReference" data-default="Internal Reference">Internal Reference</strong>
               </div>
             </div>
           </article>
@@ -83,6 +137,20 @@
               <li>Additional notes / Notas adicionales</li>
             </ul>
           </article>
+        </section>
+
+        <section class="print-cover-showcase">
+          <div class="print-showcase-rule"></div>
+          <div class="print-showcase-copy">
+            <p class="print-panel-label">Presentation note</p>
+            <p>
+              Diseñada para que cada entrega física tenga una portada consistente, más elegante y fácil de archivar.
+            </p>
+          </div>
+          <div class="print-showcase-seal">
+            <span>YC</span>
+            <small>Trusted Tax Support</small>
+          </div>
         </section>
 
         <section class="print-cover-accent-row">
@@ -112,5 +180,67 @@
         </footer>
       </section>
     </main>
+
+    <script>
+      (function () {
+        const inputs = document.querySelectorAll('[data-sync-target]');
+        const printButton = document.querySelector('[data-print-cover]');
+        const status = document.querySelector('[data-edit-status]');
+
+        const syncValue = (targetId, value) => {
+          const targets = document.querySelectorAll('[data-edit-id="' + targetId + '"]');
+          const safeValue = value.trim();
+
+          targets.forEach((target) => {
+            if (safeValue) {
+              target.textContent = safeValue;
+              target.classList.remove('is-empty');
+            } else {
+              target.textContent = target.dataset.default || '';
+              target.classList.add('is-empty');
+            }
+          });
+        };
+
+        const updatePrintState = () => {
+          const missingFields = [];
+
+          inputs.forEach((input) => {
+            if (input.dataset.required === 'true' && !input.value.trim()) {
+              missingFields.push(input.previousElementSibling ? input.previousElementSibling.textContent : 'required field');
+            }
+          });
+
+          if (missingFields.length === 0) {
+            printButton.disabled = false;
+            printButton.textContent = 'Print cover';
+            status.textContent = 'Todo listo. Ya puedes imprimir esta portada.';
+            status.classList.add('is-ready');
+          } else {
+            printButton.disabled = true;
+            printButton.textContent = 'Complete required fields to print';
+            status.textContent = 'Faltan datos obligatorios para imprimir: ' + missingFields.join(', ') + '.';
+            status.classList.remove('is-ready');
+          }
+        };
+
+        inputs.forEach((input) => {
+          input.addEventListener('input', () => {
+            syncValue(input.dataset.syncTarget, input.value);
+            updatePrintState();
+          });
+
+          syncValue(input.dataset.syncTarget, input.value);
+        });
+
+        printButton.addEventListener('click', () => {
+          if (!printButton.disabled) {
+            window.print();
+          }
+        });
+
+        updatePrintState();
+      })();
+    </script>
   </body>
 </html>
