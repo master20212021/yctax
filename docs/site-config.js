@@ -1,0 +1,4 @@
+window.YCTaxSiteConfig = {
+  gaMeasurementId: "",
+  googleSiteVerification: "",
+};

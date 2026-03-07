@@ -6,6 +6,7 @@ const globalTranslations = {
     navFaq: "FAQ",
     navContact: "Contact",
     footerText: "Bilingual support for taxes, bookkeeping, and business formation.",
+    footerPrivacy: "Privacy Policy",
     floatingWhatsapp: "WhatsApp",
     serviceContactEyebrow: "Need help with your case?",
     serviceContactTitle: "Tell us what you need and we will help you choose the next step with more clarity.",
@@ -25,6 +26,7 @@ const globalTranslations = {
     navFaq: "FAQ",
     navContact: "Contacto",
     footerText: "Apoyo bilingue para taxes, bookkeeping y apertura de empresa.",
+    footerPrivacy: "Politica de Privacidad",
     floatingWhatsapp: "WhatsApp",
     serviceContactEyebrow: "Necesitas ayuda con tu caso?",
     serviceContactTitle: "Cuentanos que necesitas y te ayudamos a decidir el siguiente paso con mas claridad.",
@@ -341,6 +343,29 @@ const whatsappLinks = document.querySelectorAll(".whatsapp-link");
 const whatsappNumber = "19293203899";
 const pageKey = document.body.dataset.servicePage;
 
+function loadOptionalAnalytics() {
+  const measurementId = window.YCTaxSiteConfig?.gaMeasurementId;
+  if (!measurementId) {
+    return;
+  }
+
+  if (!window.dataLayer) {
+    window.dataLayer = [];
+  }
+
+  window.gtag = function gtag() {
+    window.dataLayer.push(arguments);
+  };
+
+  const analyticsScript = document.createElement("script");
+  analyticsScript.async = true;
+  analyticsScript.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(measurementId)}`;
+  document.head.appendChild(analyticsScript);
+
+  window.gtag("js", new Date());
+  window.gtag("config", measurementId);
+}
+
 function ensureServicePageStructure() {
   const detailsSection = document.querySelector(".services-section");
   const faqSection = document.querySelector(".faq-section");
@@ -392,6 +417,14 @@ function ensureServicePageStructure() {
   const secondaryCta = document.querySelector(".service-page-copy .button-secondary");
   if (secondaryCta) {
     secondaryCta.setAttribute("href", "#contact");
+  }
+
+  const footer = document.querySelector(".site-footer");
+  if (footer && !footer.querySelector(".footer-links")) {
+    const footerLinks = document.createElement("div");
+    footerLinks.className = "footer-links";
+    footerLinks.innerHTML = '<a href="privacy.html" data-global="footerPrivacy"></a>';
+    footer.appendChild(footerLinks);
   }
 }
 
@@ -557,4 +590,5 @@ revealItems.forEach((item) => {
 });
 
 ensureServicePageStructure();
+loadOptionalAnalytics();
 applyLanguage(currentLanguage, false);

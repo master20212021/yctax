@@ -83,6 +83,24 @@ const translations = {
     authority2Text: "We review your case based on your documents, your goals, and where you are right now.",
     authority3Title: "Real support",
     authority3Text: "The goal is to help you move forward with more order, more calm, and fewer surprises.",
+    newYorkEyebrow: "Local trust",
+    newYorkTitle: "We have also supported clients in New York with clear and personal guidance.",
+    newYorkIntro: "We work with individuals and businesses who need to better understand their taxes, bookkeeping, or business formation process without feeling lost.",
+    newYorkCard1Title: "Clients served in New York",
+    newYorkCard1Text: "We have helped clients in New York put their taxes, business, and next steps in order.",
+    newYorkCard2Title: "Real bilingual support",
+    newYorkCard2Text: "We explain each step in English or Spanish so you can make decisions with more clarity and confidence.",
+    newYorkCard3Title: "Practical follow-up",
+    newYorkCard3Text: "It is not just about answering questions. It is about helping you move forward with order and less stress.",
+    testimonialsEyebrow: "Satisfied clients",
+    testimonialsTitle: "Some of the people we have already helped in New York.",
+    testimonialsIntro: "These testimonials reflect the kind of experience we aim to deliver: more clarity, better care, and fewer complications.",
+    testimonial1Quote: '"They helped me organize my business formation and everything felt clearer from the beginning."',
+    testimonial2Quote: '"They explained my tax situation step by step and made the whole process feel much easier."',
+    testimonial3Quote: '"We were able to get my taxes and bookkeeping in order without so much stress or confusion."',
+    testimonial4Quote: '"The attention was fast, kind, and very clear. I always felt they were really paying attention to my case."',
+    testimonial5Quote: '"They guided me patiently and helped me understand what to do first without feeling overwhelmed."',
+    testimonialLocation: "New York",
     processEyebrow: "How we work",
     processTitle: "A simple process so you know what to do from the very first message.",
     process1Title: "We hear your case",
@@ -220,6 +238,24 @@ const translations = {
     authority2Text: "Revisamos tu caso segun tus documentos, tus metas y el momento en el que estas.",
     authority3Title: "Apoyo real",
     authority3Text: "La idea es ayudarte a avanzar con mas orden, mas calma y menos sorpresas.",
+    newYorkEyebrow: "Confianza local",
+    newYorkTitle: "Tambien hemos apoyado a clientes en New York con una atencion clara y cercana.",
+    newYorkIntro: "Trabajamos con personas y negocios que necesitan entender mejor sus taxes, su bookkeeping o el proceso para abrir una empresa sin sentirse perdidos.",
+    newYorkCard1Title: "Clientes atendidos en New York",
+    newYorkCard1Text: "Hemos ayudado a clientes en New York a poner en orden sus taxes, su negocio y sus siguientes pasos.",
+    newYorkCard2Title: "Atencion bilingue real",
+    newYorkCard2Text: "Explicamos cada paso en ingles o espanol para que tomes decisiones con mas claridad y confianza.",
+    newYorkCard3Title: "Seguimiento practico",
+    newYorkCard3Text: "No se trata solo de responder dudas, sino de ayudarte a avanzar con orden y menos estres.",
+    testimonialsEyebrow: "Clientes satisfechos",
+    testimonialsTitle: "Algunas personas a las que ya hemos atendido en New York.",
+    testimonialsIntro: "Estos testimonios resumen el tipo de experiencia que buscamos dar: mas claridad, mejor trato y menos complicaciones.",
+    testimonial1Quote: '"Me ayudaron a organizar la apertura de mi empresa y senti claridad desde el primer momento."',
+    testimonial2Quote: '"They explained my tax situation step by step and made the whole process feel much easier."',
+    testimonial3Quote: '"Pudimos poner mis taxes y mi bookkeeping en orden sin tanto estres ni confusion."',
+    testimonial4Quote: '"La atencion fue rapida, amable y muy clara. Siempre senti que si estaban pendientes de mi caso."',
+    testimonial5Quote: '"Me orientaron con paciencia y me ayudaron a entender que hacer primero sin sentirme perdida."',
+    testimonialLocation: "New York",
     processEyebrow: "Como trabajamos",
     processTitle: "Un proceso simple para que sepas que hacer desde el primer contacto.",
     process1Title: "Escuchamos tu caso",
@@ -286,6 +322,29 @@ const languageButtons = document.querySelectorAll(".language-button");
 const metaDescription = document.querySelector('meta[name="description"]');
 const whatsappLinks = document.querySelectorAll(".whatsapp-link");
 const formSubmitEndpoint = "https://formsubmit.co/ajax/yctaxservicecorp@gmail.com";
+
+function loadOptionalAnalytics() {
+  const measurementId = window.YCTaxSiteConfig?.gaMeasurementId;
+  if (!measurementId) {
+    return;
+  }
+
+  if (!window.dataLayer) {
+    window.dataLayer = [];
+  }
+
+  window.gtag = function gtag() {
+    window.dataLayer.push(arguments);
+  };
+
+  const analyticsScript = document.createElement("script");
+  analyticsScript.async = true;
+  analyticsScript.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(measurementId)}`;
+  document.head.appendChild(analyticsScript);
+
+  window.gtag("js", new Date());
+  window.gtag("config", measurementId);
+}
 
 function detectLanguage() {
   const savedLanguage = localStorage.getItem("yc-tax-language");
@@ -529,4 +588,5 @@ if (contactForm) {
   });
 }
 
+loadOptionalAnalytics();
 applyLanguage(currentLanguage, false);

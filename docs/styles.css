@@ -190,6 +190,8 @@ textarea {
 .service-inclusions-section,
 .authority-section,
 .process-section,
+.local-trust-section,
+.testimonials-section,
 .faq-section,
 .contact-section {
   margin-top: 30px;
@@ -491,6 +493,8 @@ textarea {
 
 .services-grid,
 .inclusions-grid,
+.local-trust-grid,
+.testimonials-grid,
 .authority-section,
 .contact-section,
 .process-grid {
@@ -508,8 +512,20 @@ textarea {
   margin-top: 20px;
 }
 
+.local-trust-grid {
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 20px;
+}
+
+.testimonials-grid {
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 20px;
+}
+
 .service-card,
 .inclusion-card,
+.local-trust-card,
+.testimonial-card,
 .authority-list article {
   padding: 24px;
   border-radius: 24px;
@@ -527,6 +543,56 @@ textarea {
   background: var(--panel);
   backdrop-filter: blur(14px);
   box-shadow: var(--shadow);
+}
+
+.local-trust-card,
+.testimonial-card {
+  border: 1px solid rgba(255, 255, 255, 0.68);
+  background: var(--panel);
+  backdrop-filter: blur(14px);
+  box-shadow: var(--shadow);
+}
+
+.local-trust-card h3,
+.testimonial-meta strong,
+.legal-card h2,
+.legal-card h3 {
+  font-family: "Cormorant Garamond", serif;
+}
+
+.local-trust-card h3 {
+  margin: 0 0 10px;
+  font-size: 1.75rem;
+}
+
+.local-trust-card p,
+.testimonial-card p,
+.testimonial-meta span,
+.legal-card p,
+.legal-card li {
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.testimonial-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.testimonial-quote {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.testimonial-meta {
+  display: grid;
+  gap: 4px;
+}
+
+.testimonial-meta strong {
+  font-size: 1.45rem;
 }
 
 .inclusion-card h3 {
@@ -855,6 +921,59 @@ textarea {
   margin: 0;
 }
 
+.footer-links {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.footer-links a {
+  color: var(--gold-deep);
+  font-weight: 700;
+}
+
+.legal-page {
+  padding-top: 12px;
+}
+
+.legal-hero,
+.legal-card {
+  border: 1px solid rgba(255, 255, 255, 0.68);
+  background: var(--panel);
+  backdrop-filter: blur(14px);
+  box-shadow: var(--shadow);
+}
+
+.legal-hero {
+  margin-top: 30px;
+  padding: 28px;
+  border-radius: 30px;
+}
+
+.legal-grid {
+  display: grid;
+  gap: 18px;
+  margin-top: 22px;
+}
+
+.legal-card {
+  padding: 24px;
+  border-radius: 24px;
+}
+
+.legal-card h2,
+.legal-card h3 {
+  margin: 0 0 12px;
+}
+
+.legal-card ul {
+  margin: 0;
+  padding-left: 18px;
+  display: grid;
+  gap: 10px;
+}
+
 .floating-whatsapp {
   position: fixed;
   right: 24px;
@@ -894,6 +1013,8 @@ textarea {
   .service-page-hero,
   .services-grid,
   .inclusions-grid,
+  .local-trust-grid,
+  .testimonials-grid,
   .authority-section,
   .process-grid,
   .contact-section {
@@ -901,7 +1022,8 @@ textarea {
   }
 
   .signature-strip,
-  .site-footer {
+  .site-footer,
+  .footer-links {
     flex-direction: column;
     align-items: flex-start;
   }
