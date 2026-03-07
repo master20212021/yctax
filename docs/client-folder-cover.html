@@ -215,12 +215,39 @@
             target.innerHTML = '';
 
             if (hasDocuments) {
-              allDocuments.forEach((documentName) => {
+              const columns = document.createElement('div');
+              columns.className = 'document-print-columns';
+
+              const leftColumn = document.createElement('div');
+              leftColumn.className = 'document-print-column';
+
+              const rightColumn = document.createElement('div');
+              rightColumn.className = 'document-print-column';
+
+              const leftItems = allDocuments.length > 3 ? allDocuments.slice(0, 3) : allDocuments;
+              const rightItems = allDocuments.length > 3 ? allDocuments.slice(3) : [];
+
+              leftItems.forEach((documentName) => {
                 const item = document.createElement('div');
                 item.className = 'document-print-item';
                 item.textContent = documentName;
-                target.appendChild(item);
+                leftColumn.appendChild(item);
               });
+
+              rightItems.forEach((documentName) => {
+                const item = document.createElement('div');
+                item.className = 'document-print-item';
+                item.textContent = documentName;
+                rightColumn.appendChild(item);
+              });
+
+              columns.appendChild(leftColumn);
+
+              if (rightItems.length > 0) {
+                columns.appendChild(rightColumn);
+              }
+
+              target.appendChild(columns);
               target.classList.remove('is-empty');
             } else {
               target.textContent = '';
