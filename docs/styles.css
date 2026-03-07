@@ -1954,6 +1954,27 @@ textarea {
   box-shadow: 0 0 0 3px rgba(194, 160, 94, 0.12);
 }
 
+.editable-control-grid textarea {
+  width: 100%;
+  padding: 14px 15px;
+  border: 1px solid rgba(194, 160, 94, 0.22);
+  border-radius: 14px;
+  background: #fff;
+  color: var(--text);
+  resize: vertical;
+  font: inherit;
+}
+
+.editable-control-grid textarea:focus {
+  outline: none;
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(194, 160, 94, 0.12);
+}
+
+.editable-control-span-3 {
+  grid-column: 1 / -1;
+}
+
 .editable-status.is-ready {
   color: #0c7b4d;
   font-weight: 700;
@@ -2185,12 +2206,41 @@ textarea {
   text-align: center;
 }
 
+.print-cover-grid {
+  justify-items: center;
+}
+
+.print-line-item-center strong {
+  margin-inline: auto;
+}
+
 .print-cover-accent-row {
   margin-top: 18px;
+  justify-content: center;
 }
 
 .print-accent-card {
   min-height: 94px;
+}
+
+.print-accent-card-wide {
+  width: min(620px, 100%);
+  margin: 0 auto;
+  text-align: center;
+}
+
+.print-accent-card-contact {
+  width: min(360px, 100%);
+  margin: 0 auto;
+  text-align: center;
+}
+
+.editable-multiline {
+  white-space: pre-line;
+}
+
+.is-hidden {
+  display: none !important;
 }
 
 .print-cover-footer {

@@ -60,6 +60,10 @@
             <span>Referencia interna</span>
             <input type="text" data-sync-target="editableReference" placeholder="Client ID o código interno" />
           </label>
+          <label class="editable-control-span-3">
+            <span>Documentos incluidos</span>
+            <textarea data-sync-target="editableIncludedDocs" rows="5" placeholder="Un documento por línea&#10;Federal tax return&#10;State tax return&#10;Supporting documents"></textarea>
+          </label>
         </div>
         <p class="editable-status" data-edit-status>Faltan datos obligatorios para imprimir: nombre del cliente, año fiscal y fecha.</p>
       </section>
@@ -105,26 +109,18 @@
               </div>
             </div>
           </article>
-
-          <article class="print-info-panel">
-            <p class="print-panel-label">Included documents / Documentos incluidos</p>
-            <ul class="print-checklist">
-              <li>Federal and state tax return / Declaración federal y estatal</li>
-              <li>Supporting documents / Documentos de soporte</li>
-              <li>Business registration / Registro de empresa</li>
-              <li>Bookkeeping summary / Resumen contable</li>
-              <li>Payroll records / Registros de nómina</li>
-              <li>Additional notes / Notas adicionales</li>
-            </ul>
-          </article>
         </section>
 
         <section class="print-cover-accent-row">
-          <article class="print-accent-card">
+          <article class="print-accent-card print-accent-card-wide is-hidden" data-hide-if-empty="editableFileType">
             <p class="print-panel-label">File Type</p>
-            <p class="editable-value is-empty" data-edit-id="editableFileType" data-default="Tax Return Package">Tax Return Package</p>
+            <p class="editable-value" data-edit-id="editableFileType" data-default=""></p>
           </article>
-          <article class="print-accent-card print-accent-card-gold">
+          <article class="print-accent-card print-accent-card-wide is-hidden" data-hide-if-empty="editableIncludedDocs">
+            <p class="print-panel-label">Included Documents</p>
+            <p class="editable-value editable-multiline" data-edit-id="editableIncludedDocs" data-default=""></p>
+          </article>
+          <article class="print-accent-card print-accent-card-gold print-accent-card-contact">
             <p class="print-panel-label">Contact</p>
             <p>+1 (929) 320-3899</p>
             <p>yctaxservice.com</p>
@@ -157,6 +153,10 @@
               target.textContent = target.dataset.default || '';
               target.classList.add('is-empty');
             }
+          });
+
+          document.querySelectorAll('[data-hide-if-empty="' + targetId + '"]').forEach((section) => {
+            section.classList.toggle('is-hidden', !safeValue);
           });
         };
 
