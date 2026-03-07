@@ -788,7 +788,7 @@
           const currentYear = new Date().getFullYear();
           const fragment = document.createDocumentFragment();
 
-          for (let year = currentYear + 1; year >= currentYear - 10; year -= 1) {
+          for (let year = currentYear + 5; year >= currentYear - 10; year -= 1) {
             const option = document.createElement('option');
             option.value = String(year);
             option.textContent = String(year);
