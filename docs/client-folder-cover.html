@@ -15,7 +15,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
@@ -33,7 +33,7 @@
       <section class="editable-control-panel screen-only">
         <div class="editable-control-intro">
           <h1>Portada premium editable</h1>
-          <p>Llena los datos una sola vez. La portada se actualiza en tiempo real y queda lista para imprimir en carpeta física.</p>
+          <p>Llena los datos del cliente, marca los documentos incluidos y la portada quedará lista para imprimir con una presentación más ejecutiva.</p>
         </div>
         <div class="editable-control-grid">
           <label>
@@ -62,7 +62,46 @@
           </label>
           <label class="editable-control-span-3">
             <span>Documentos incluidos</span>
-            <textarea data-sync-target="editableIncludedDocs" rows="5" placeholder="Un documento por línea&#10;Federal tax return&#10;State tax return&#10;Supporting documents"></textarea>
+            <div class="document-picker-shell">
+              <div class="document-picker-grid">
+                <label class="document-option">
+                  <input type="checkbox" data-doc-option="Federal tax return" />
+                  <span>Federal tax return</span>
+                </label>
+                <label class="document-option">
+                  <input type="checkbox" data-doc-option="State tax return" />
+                  <span>State tax return</span>
+                </label>
+                <label class="document-option">
+                  <input type="checkbox" data-doc-option="Supporting documents" />
+                  <span>Supporting documents</span>
+                </label>
+                <label class="document-option">
+                  <input type="checkbox" data-doc-option="W-2 / 1099 forms" />
+                  <span>W-2 / 1099 forms</span>
+                </label>
+                <label class="document-option">
+                  <input type="checkbox" data-doc-option="Business registration" />
+                  <span>Business registration</span>
+                </label>
+                <label class="document-option">
+                  <input type="checkbox" data-doc-option="Bookkeeping summary" />
+                  <span>Bookkeeping summary</span>
+                </label>
+                <label class="document-option">
+                  <input type="checkbox" data-doc-option="Payroll records" />
+                  <span>Payroll records</span>
+                </label>
+                <label class="document-option">
+                  <input type="checkbox" data-doc-option="Client notes" />
+                  <span>Client notes</span>
+                </label>
+              </div>
+              <label class="document-custom-field">
+                <span>Otro documento o notas</span>
+                <textarea data-doc-custom rows="4" placeholder="Escribe otros documentos. Uno por línea."></textarea>
+              </label>
+            </div>
           </label>
         </div>
         <p class="editable-status" data-edit-status>Faltan datos obligatorios para imprimir: nombre del cliente, año fiscal y fecha.</p>
@@ -80,10 +119,12 @@
             <span class="print-brand-logo-shell">
               <img class="print-brand-logo" src="logo-removebg-preview.png" data-fallback-src="logo.jpg" alt="YC Tax Service Corp logo" />
             </span>
+            <p class="print-brand-monogram">Private Client File</p>
           </div>
         </header>
 
         <section class="print-cover-hero">
+          <div class="print-hero-divider"></div>
         </section>
 
         <section class="print-cover-grid">
@@ -117,7 +158,7 @@
           </article>
           <article class="print-accent-card print-accent-card-wide is-hidden" data-hide-if-empty="editableIncludedDocs">
             <p class="print-panel-label">Included Documents</p>
-            <p class="editable-value editable-multiline" data-edit-id="editableIncludedDocs" data-default=""></p>
+            <div class="editable-value editable-multiline document-print-list" data-edit-id="editableIncludedDocs" data-default=""></div>
           </article>
           <article class="print-accent-card print-accent-card-gold print-accent-card-contact">
             <p class="print-panel-label">Contact</p>
@@ -137,6 +178,8 @@
     <script>
       (function () {
         const inputs = document.querySelectorAll('[data-sync-target]');
+        const documentChecks = document.querySelectorAll('[data-doc-option]');
+        const customDocumentField = document.querySelector('[data-doc-custom]');
         const printButton = document.querySelector('[data-print-cover]');
         const status = document.querySelector('[data-edit-status]');
 
@@ -156,6 +199,42 @@
 
           document.querySelectorAll('[data-hide-if-empty="' + targetId + '"]').forEach((section) => {
             section.classList.toggle('is-hidden', !safeValue);
+          });
+        };
+
+        const syncDocuments = () => {
+          const selectedDocuments = Array.from(documentChecks)
+            .filter((checkbox) => checkbox.checked)
+            .map((checkbox) => checkbox.dataset.docOption);
+
+          const customDocuments = (customDocumentField ? customDocumentField.value : '')
+            .split('\n')
+            .map((item) => item.trim())
+            .filter(Boolean);
+
+          const allDocuments = selectedDocuments.concat(customDocuments);
+          const printTargets = document.querySelectorAll('[data-edit-id="editableIncludedDocs"]');
+          const hasDocuments = allDocuments.length > 0;
+
+          printTargets.forEach((target) => {
+            target.innerHTML = '';
+
+            if (hasDocuments) {
+              allDocuments.forEach((documentName) => {
+                const item = document.createElement('div');
+                item.className = 'document-print-item';
+                item.textContent = documentName;
+                target.appendChild(item);
+              });
+              target.classList.remove('is-empty');
+            } else {
+              target.textContent = '';
+              target.classList.add('is-empty');
+            }
+          });
+
+          document.querySelectorAll('[data-hide-if-empty="editableIncludedDocs"]').forEach((section) => {
+            section.classList.toggle('is-hidden', !hasDocuments);
           });
         };
 
@@ -190,12 +269,21 @@
           syncValue(input.dataset.syncTarget, input.value);
         });
 
+        documentChecks.forEach((checkbox) => {
+          checkbox.addEventListener('change', syncDocuments);
+        });
+
+        if (customDocumentField) {
+          customDocumentField.addEventListener('input', syncDocuments);
+        }
+
         printButton.addEventListener('click', () => {
           if (!printButton.disabled) {
             window.print();
           }
         });
 
+        syncDocuments();
         updatePrintState();
       })();
     </script>

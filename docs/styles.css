@@ -1916,8 +1916,8 @@ textarea {
 
 .editable-control-intro h1 {
   margin: 0;
-  font-family: "Cormorant Garamond", serif;
-  font-size: 2.5rem;
+  font-family: "Fraunces", "Cormorant Garamond", serif;
+  font-size: 2.65rem;
   line-height: 1;
 }
 
@@ -1942,9 +1942,9 @@ textarea {
 .editable-control-grid input {
   width: 100%;
   padding: 14px 15px;
+  background: linear-gradient(180deg, #fffdfa, #fff8ef);
   border: 1px solid rgba(194, 160, 94, 0.22);
   border-radius: 14px;
-  background: #fff;
   color: var(--text);
 }
 
@@ -1954,12 +1954,59 @@ textarea {
   box-shadow: 0 0 0 3px rgba(194, 160, 94, 0.12);
 }
 
+.document-picker-shell {
+  display: grid;
+  gap: 14px;
+}
+
+.document-picker-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.document-option {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 56px;
+  padding: 12px 14px;
+  border: 1px solid rgba(194, 160, 94, 0.18);
+  border-radius: 16px;
+  background: linear-gradient(180deg, rgba(255, 252, 246, 0.96), rgba(251, 244, 229, 0.92));
+  box-shadow: 0 12px 28px rgba(68, 52, 31, 0.05);
+  cursor: pointer;
+}
+
+.document-option input {
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  accent-color: var(--gold-deep);
+}
+
+.document-option span {
+  font-size: 0.9rem;
+  line-height: 1.35;
+}
+
+.document-custom-field {
+  display: grid;
+  gap: 8px;
+}
+
+.document-custom-field span {
+  font-size: 0.92rem;
+  color: var(--text);
+}
+
 .editable-control-grid textarea {
   width: 100%;
   padding: 14px 15px;
   border: 1px solid rgba(194, 160, 94, 0.22);
   border-radius: 14px;
-  background: #fff;
+  background: linear-gradient(180deg, #fffdfa, #fff8ef);
   color: var(--text);
   resize: vertical;
   font: inherit;
@@ -1973,6 +2020,53 @@ textarea {
 
 .editable-control-span-3 {
   grid-column: 1 / -1;
+}
+
+.document-picker-shell {
+  display: grid;
+  gap: 14px;
+}
+
+.document-picker-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.document-option {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 56px;
+  padding: 12px 14px;
+  border: 1px solid rgba(194, 160, 94, 0.18);
+  border-radius: 16px;
+  background: linear-gradient(180deg, rgba(255, 252, 246, 0.96), rgba(251, 244, 229, 0.92));
+  box-shadow: 0 12px 28px rgba(68, 52, 31, 0.05);
+  cursor: pointer;
+}
+
+.document-option input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--gold-deep);
+  margin: 0;
+}
+
+.document-option span {
+  font-size: 0.9rem;
+  line-height: 1.35;
+}
+
+.document-custom-field {
+  display: grid;
+  gap: 8px;
+}
+
+.document-custom-field span {
+  font-size: 0.92rem;
+  color: var(--text);
 }
 
 .editable-status.is-ready {
@@ -2298,5 +2392,87 @@ textarea {
   .print-corner {
     width: 28px;
     height: 28px;
+  }
+}
+
+.print-cover-card {
+  background:
+    radial-gradient(circle at top center, rgba(194, 160, 94, 0.08), transparent 34%),
+    linear-gradient(180deg, rgba(255, 253, 249, 0.98), rgba(250, 245, 236, 0.98));
+}
+
+.print-brand-lockup-centered {
+  gap: 12px;
+}
+
+.print-brand-monogram {
+  margin: 0;
+  color: var(--gold-deep);
+  font-family: "Fraunces", "Cormorant Garamond", serif;
+  font-size: 1.02rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.print-cover-hero {
+  margin-top: 12px;
+}
+
+.print-hero-divider {
+  width: min(460px, 100%);
+  height: 1px;
+  margin: 0 auto;
+  background: linear-gradient(90deg, transparent, rgba(157, 124, 63, 0.34), transparent);
+}
+
+.print-info-panel-primary {
+  padding: 28px 24px;
+  background: linear-gradient(180deg, rgba(255, 252, 246, 0.94), rgba(252, 247, 238, 0.94));
+  border: 1px solid rgba(194, 160, 94, 0.16);
+  box-shadow: 0 18px 42px rgba(68, 52, 31, 0.06);
+}
+
+.print-line-item-center strong {
+  font-family: "Fraunces", "Cormorant Garamond", serif;
+  font-size: 1.08rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.document-print-list {
+  display: grid;
+  gap: 10px;
+  justify-items: center;
+}
+
+.document-print-item {
+  position: relative;
+  width: min(460px, 100%);
+  padding: 0 0 10px;
+  color: var(--text);
+  font-weight: 600;
+}
+
+.document-print-item::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  transform: translateX(-50%);
+  background: linear-gradient(90deg, transparent, rgba(157, 124, 63, 0.22), transparent);
+}
+
+@media (max-width: 900px) {
+  .document-picker-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .document-picker-grid {
+    grid-template-columns: 1fr;
   }
 }
