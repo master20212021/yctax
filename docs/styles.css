@@ -2130,10 +2130,10 @@ textarea {
 }
 
 .print-brand-logo-shell {
-  width: 48px;
-  height: 48px;
-  padding: 5px;
-  border-radius: 14px;
+  width: 34px;
+  height: 34px;
+  padding: 4px;
+  border-radius: 10px;
 }
 
 .print-cover-header {
@@ -2189,7 +2189,7 @@ textarea {
 
 .print-line-item-center strong {
   min-width: 220px;
-  border-bottom: 1px solid rgba(45, 42, 38, 0.18);
+  border-bottom: 0;
   padding-bottom: 8px;
 }
 
