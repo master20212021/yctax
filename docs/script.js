@@ -508,7 +508,11 @@ if (contactForm) {
         }
         return response.json();
       })
-      .then(() => {
+      .then((result) => {
+        if (String(result?.success).toLowerCase() !== "true") {
+          throw new Error(result?.message || "Form backend rejected submission");
+        }
+
         contactForm.reset();
         setFormStatus(dictionary.formStatusSuccess, "is-success");
       })
