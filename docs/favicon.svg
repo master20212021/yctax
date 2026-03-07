@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">YC Tax Service Corp favicon</title>
+  <desc id="desc">Gold monogram on an ivory rounded square.</desc>
+  <rect width="128" height="128" rx="30" fill="#f7f4ee"/>
+  <rect x="8" y="8" width="112" height="112" rx="24" fill="#fffaf2" stroke="#d9c29a" stroke-width="2"/>
+  <path d="M40 34h48v10H69v50H59V44H40z" fill="#2d2a26"/>
+  <path d="M35 98 54 69 36 41h12l12 20 12-20h12L66 69l19 29H73L60 77 47 98z" fill="#c2a05e" opacity="0.95"/>
+</svg>

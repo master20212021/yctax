@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">YC Tax Service Corp social preview</title>
+  <desc id="desc">Social preview card for YC Tax Service Corp website.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#fcfaf5"/>
+      <stop offset="100%" stop-color="#f0eadf"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#d0b072"/>
+      <stop offset="100%" stop-color="#9d7c3f"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="1040" cy="130" r="180" fill="#efe2c2" opacity="0.55"/>
+  <circle cx="180" cy="520" r="220" fill="#f3e8cf" opacity="0.42"/>
+  <rect x="56" y="56" width="1088" height="518" rx="34" fill="#fffdf9" stroke="#eadbc0"/>
+  <rect x="88" y="88" width="116" height="116" rx="28" fill="#fff" stroke="#e2d0aa"/>
+  <path d="M118 118h56v12h-22v50h-12v-50h-22z" fill="#2d2a26"/>
+  <path d="M109 189 129 159 112 132h12l11 18 11-18h12l-17 27 20 30h-13l-13-20-13 20z" fill="url(#gold)"/>
+  <text x="234" y="136" fill="#2d2a26" font-family="Georgia, 'Times New Roman', serif" font-size="56" font-weight="700">YC Tax Service Corp</text>
+  <text x="234" y="188" fill="#9d7c3f" font-family="Arial, sans-serif" font-size="22" font-weight="700" letter-spacing="2">TAX HELP IN ENGLISH AND SPANISH</text>
+  <text x="88" y="304" fill="#2d2a26" font-family="Georgia, 'Times New Roman', serif" font-size="76" font-weight="700">Taxes and bookkeeping</text>
+  <text x="88" y="388" fill="#2d2a26" font-family="Georgia, 'Times New Roman', serif" font-size="76" font-weight="700">with clear, personal guidance.</text>
+  <text x="88" y="466" fill="#6f675d" font-family="Arial, sans-serif" font-size="30">Bilingual support for personal taxes, business taxes, bookkeeping and company formation.</text>
+  <rect x="88" y="496" width="314" height="56" rx="28" fill="url(#gold)"/>
+  <text x="245" y="532" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="24" font-weight="700">WhatsApp +1 (929) 320-3899</text>
+</svg>
