@@ -4,270 +4,46 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>YC Tax Service Corp | Client Folder Cover</title>
-    <meta
-      name="description"
-      content="Portada imprimible para carpetas de clientes de YC Tax Service Corp."
-    />
-    <link rel="icon" href="logo-removebg-preview.png" type="image/png" />
-    <link rel="shortcut icon" href="logo-removebg-preview.png" type="image/png" />
-    <link rel="apple-touch-icon" href="logo-removebg-preview.png" />
-    <link rel="manifest" href="site.webmanifest" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,600;6..96,700&family=Manrope:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="styles.css" />
+    <meta name="description" content="Portada temporalmente eliminada." />
+    <style>
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        font-family: Arial, sans-serif;
+        background: #ffffff;
+        color: #2d2a26;
+      }
+
+      .notice {
+        max-width: 520px;
+        padding: 24px;
+        text-align: center;
+      }
+
+      .notice h1 {
+        margin: 0 0 12px;
+        font-size: 1.4rem;
+      }
+
+      .notice p {
+        margin: 0;
+        line-height: 1.6;
+        color: #6d655a;
+      }
+
+      @media print {
+        .notice {
+          display: none;
+        }
+      }
+    </style>
   </head>
-  <body class="print-cover-body">
-    <main class="print-cover-page">
-      <div class="cover-toolbar screen-only">
-        <div class="cover-toolbar-copy">
-          <p class="print-panel-label">Premium editable cover</p>
-          <p class="cover-toolbar-note">Completa la información del cliente y luego imprime desde esta misma página.</p>
-        </div>
-        <button class="cover-print-button" type="button" data-print-cover disabled>Complete required fields to print</button>
-      </div>
-
-      <section class="editable-control-panel screen-only">
-        <div class="editable-control-intro">
-          <h1>Portada premium editable</h1>
-          <p>Completa la ficha del cliente, marca documentos en segundos y deja la portada lista para imprimir con un formato más ejecutivo.</p>
-        </div>
-        <div class="editable-control-grid">
-          <label>
-            <span>Nombre del cliente</span>
-            <input type="text" data-sync-target="editableClientName" data-required="true" placeholder="Ej. Maria Rodriguez" />
-          </label>
-          <label>
-            <span>Año fiscal</span>
-            <input type="text" data-sync-target="editableTaxYear" data-required="true" placeholder="2025" />
-          </label>
-          <label>
-            <span>Fecha</span>
-            <input type="text" data-sync-target="editableDate" data-required="true" placeholder="03/07/2026" />
-          </label>
-          <label>
-            <span>Preparado por</span>
-            <input type="text" data-sync-target="editablePreparedBy" placeholder="YC Tax Service Corp" />
-          </label>
-          <label>
-            <span>Tipo de expediente</span>
-            <input type="text" data-sync-target="editableFileType" placeholder="Tax Return Package" />
-          </label>
-          <label>
-            <span>Referencia interna</span>
-            <input type="text" data-sync-target="editableReference" placeholder="Client ID o código interno" />
-          </label>
-          <label class="editable-control-span-3">
-            <span>Documentos incluidos</span>
-            <div class="document-options-panel">
-              <div class="document-options-grid">
-                <label class="document-option">
-                  <input type="checkbox" value="Federal tax return" data-doc-option />
-                  <span>Federal tax return</span>
-                </label>
-                <label class="document-option">
-                  <input type="checkbox" value="State tax return" data-doc-option />
-                  <span>State tax return</span>
-                </label>
-                <label class="document-option">
-                  <input type="checkbox" value="W-2 / 1099 copies" data-doc-option />
-                  <span>W-2 / 1099 copies</span>
-                </label>
-                <label class="document-option">
-                  <input type="checkbox" value="Supporting documents" data-doc-option />
-                  <span>Supporting documents</span>
-                </label>
-                <label class="document-option">
-                  <input type="checkbox" value="ITIN documents" data-doc-option />
-                  <span>ITIN documents</span>
-                </label>
-                <label class="document-option">
-                  <input type="checkbox" value="Business registration" data-doc-option />
-                  <span>Business registration</span>
-                </label>
-                <label class="document-option">
-                  <input type="checkbox" value="Bookkeeping summary" data-doc-option />
-                  <span>Bookkeeping summary</span>
-                </label>
-                <label class="document-option">
-                  <input type="checkbox" value="Payroll records" data-doc-option />
-                  <span>Payroll records</span>
-                </label>
-              </div>
-              <textarea data-sync-target="editableIncludedDocs" rows="4" placeholder="Otros documentos, uno por línea"></textarea>
-            </div>
-          </label>
-        </div>
-        <p class="editable-status" data-edit-status>Faltan datos obligatorios para imprimir: nombre del cliente, año fiscal y fecha.</p>
-      </section>
-
-      <section class="print-cover-card">
-        <div class="print-corner print-corner-top-left" aria-hidden="true"></div>
-        <div class="print-corner print-corner-top-right" aria-hidden="true"></div>
-        <div class="print-corner print-corner-bottom-left" aria-hidden="true"></div>
-        <div class="print-corner print-corner-bottom-right" aria-hidden="true"></div>
-        <div class="print-cover-topbar"></div>
-
-        <header class="print-cover-header">
-          <div class="print-brand-lockup print-brand-lockup-centered">
-            <span class="print-brand-logo-shell">
-              <img class="print-brand-logo" src="logo-removebg-preview.png" data-fallback-src="logo.jpg" alt="YC Tax Service Corp logo" />
-            </span>
-            <p class="print-brand-signature">Tax Service Corp</p>
-          </div>
-        </header>
-
-        <section class="print-cover-hero">
-          <div class="print-hero-frame">
-            <p class="print-kicker">Private Client Portfolio</p>
-            <h1 class="print-client-name editable-value is-empty" data-edit-id="editableClientName" data-default="Client Name">Client Name</h1>
-            <div class="print-client-meta">
-              <p class="editable-value is-empty" data-edit-id="editableTaxYear" data-default="0000">0000</p>
-              <span></span>
-              <p class="editable-value is-empty" data-edit-id="editableDate" data-default="MM/DD/YYYY">MM/DD/YYYY</p>
-            </div>
-          </div>
-        </section>
-
-        <section class="print-cover-grid">
-          <article class="print-info-panel print-info-panel-primary">
-            <div class="print-line-group print-line-group-minimal print-detail-stack">
-              <div class="print-line-item print-line-item-filled print-line-item-center is-hidden" data-hide-if-empty="editablePreparedBy">
-                <span>Prepared by</span>
-                <strong class="editable-value" data-edit-id="editablePreparedBy" data-default=""></strong>
-              </div>
-              <div class="print-line-item print-line-item-filled print-line-item-center is-hidden" data-hide-if-empty="editableReference">
-                <span>Reference</span>
-                <strong class="editable-value" data-edit-id="editableReference" data-default=""></strong>
-              </div>
-              <div class="print-line-item print-line-item-filled print-line-item-center is-hidden" data-hide-if-empty="editableFileType">
-                <span>File Type</span>
-                <strong class="editable-value" data-edit-id="editableFileType" data-default=""></strong>
-              </div>
-            </div>
-          </article>
-        </section>
-
-        <section class="print-cover-accent-row">
-          <article class="print-accent-card print-accent-card-wide is-hidden" data-hide-if-empty="editableIncludedDocs">
-            <p class="print-panel-label">Included Documents</p>
-            <ul class="print-document-list" data-document-list></ul>
-          </article>
-          <article class="print-accent-card print-accent-card-gold print-accent-card-contact">
-            <p class="print-panel-label">Contact</p>
-            <p>+1 (929) 320-3899</p>
-            <p>yctaxservice.com</p>
-          </article>
-        </section>
-
-        <footer class="print-cover-footer">
-          <div class="print-footer-mark">
-            <span>Private & Confidential</span>
-          </div>
-        </footer>
-      </section>
+  <body>
+    <main class="notice">
+      <h1>Portada eliminada temporalmente</h1>
+      <p>Esperando confirmación para crear una nueva versión desde cero.</p>
     </main>
-
-    <script>
-      (function () {
-        const inputs = document.querySelectorAll('[data-sync-target]');
-        const docOptions = document.querySelectorAll('[data-doc-option]');
-        const printButton = document.querySelector('[data-print-cover]');
-        const status = document.querySelector('[data-edit-status]');
-        const documentList = document.querySelector('[data-document-list]');
-
-        const syncValue = (targetId, value) => {
-          const targets = document.querySelectorAll('[data-edit-id="' + targetId + '"]');
-          const safeValue = value.trim();
-
-          targets.forEach((target) => {
-            if (safeValue) {
-              target.textContent = safeValue;
-              target.classList.remove('is-empty');
-            } else {
-              target.textContent = target.dataset.default || '';
-              target.classList.add('is-empty');
-            }
-          });
-
-          document.querySelectorAll('[data-hide-if-empty="' + targetId + '"]').forEach((section) => {
-            section.classList.toggle('is-hidden', !safeValue);
-          });
-        };
-
-        const syncDocuments = () => {
-          const selectedDocs = Array.from(docOptions)
-            .filter((option) => option.checked)
-            .map((option) => option.value.trim())
-            .filter(Boolean);
-          const customDocs = Array.from(document.querySelector('[data-sync-target="editableIncludedDocs"]').value.split('\n'))
-            .map((item) => item.trim())
-            .filter(Boolean);
-          const allDocs = [...selectedDocs, ...customDocs];
-
-          documentList.innerHTML = '';
-
-          allDocs.forEach((item) => {
-            const listItem = document.createElement('li');
-            listItem.textContent = item;
-            documentList.appendChild(listItem);
-          });
-
-          document.querySelectorAll('[data-hide-if-empty="editableIncludedDocs"]').forEach((section) => {
-            section.classList.toggle('is-hidden', allDocs.length === 0);
-          });
-        };
-
-        const updatePrintState = () => {
-          const missingFields = [];
-
-          inputs.forEach((input) => {
-            if (input.dataset.required === 'true' && !input.value.trim()) {
-              missingFields.push(input.previousElementSibling ? input.previousElementSibling.textContent : 'required field');
-            }
-          });
-
-          if (missingFields.length === 0) {
-            printButton.disabled = false;
-            printButton.textContent = 'Print cover';
-            status.textContent = 'Todo listo. Ya puedes imprimir esta portada.';
-            status.classList.add('is-ready');
-          } else {
-            printButton.disabled = true;
-            printButton.textContent = 'Complete required fields to print';
-            status.textContent = 'Faltan datos obligatorios para imprimir: ' + missingFields.join(', ') + '.';
-            status.classList.remove('is-ready');
-          }
-        };
-
-        inputs.forEach((input) => {
-          input.addEventListener('input', () => {
-            syncValue(input.dataset.syncTarget, input.value);
-            if (input.dataset.syncTarget === 'editableIncludedDocs') {
-              syncDocuments();
-            }
-            updatePrintState();
-          });
-
-          syncValue(input.dataset.syncTarget, input.value);
-        });
-
-        docOptions.forEach((option) => {
-          option.addEventListener('change', syncDocuments);
-        });
-
-        printButton.addEventListener('click', () => {
-          if (!printButton.disabled) {
-            window.print();
-          }
-        });
-
-        syncDocuments();
-        updatePrintState();
-      })();
-    </script>
   </body>
 </html>
