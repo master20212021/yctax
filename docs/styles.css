@@ -2109,10 +2109,10 @@ textarea {
 }
 
 .print-brand-logo-shell {
-  width: 72px;
-  height: 72px;
-  padding: 8px;
-  border-radius: 20px;
+  width: 58px;
+  height: 58px;
+  padding: 6px;
+  border-radius: 16px;
 }
 
 .print-cover-header {
@@ -2120,7 +2120,7 @@ textarea {
 }
 
 .print-cover-hero {
-  margin-top: 26px;
+  margin-top: 18px;
   max-width: 100%;
   text-align: center;
 }
@@ -2130,12 +2130,41 @@ textarea {
   margin: 10px auto 0;
 }
 
+.print-brand-name {
+  font-size: 1.72rem;
+}
+
+.print-brand-note {
+  margin-top: 4px;
+  font-size: 0.84rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.print-panel-label {
+  margin-bottom: 10px;
+}
+
+.print-cover-grid {
+  margin-top: 18px;
+}
+
+.print-line-group {
+  gap: 14px;
+}
+
 .print-cover-accent-row {
-  margin-top: 28px;
+  margin-top: 18px;
 }
 
 .print-accent-card {
-  min-height: 120px;
+  min-height: 94px;
+}
+
+.print-cover-footer {
+  justify-content: center;
+  margin-top: 22px;
+  padding-top: 14px;
 }
 
 .print-corner {
