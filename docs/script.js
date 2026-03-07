@@ -45,21 +45,36 @@ const translations = {
     servicesIntro:
       "Whether you are getting started, catching up, or trying to stay organized, we are here to help you move forward with clarity.",
     service1Title: "Business formation",
-    service1Text:
-      "We help you choose the business structure that fits your activity and your goals.",
+    service1Text: "We help you choose the business structure that fits your activity and your goals.",
     service1Link: "View details",
     service2Title: "Personal taxes",
-    service2Text:
-      "We help you review your documents and prepare your return with more confidence.",
+    service2Text: "We help you review your documents and prepare your return with more confidence.",
     service2Link: "View details",
     service3Title: "Business taxes",
-    service3Text:
-      "We organize your business tax information so deadlines do not turn into a problem.",
+    service3Text: "We organize your business tax information so deadlines do not turn into a problem.",
     service3Link: "View details",
     service4Title: "Bookkeeping and payroll",
-    service4Text:
-      "Keep your numbers clearer and your day-to-day business more organized month after month.",
+    service4Text: "Keep your numbers clearer and your day-to-day business more organized month after month.",
     service4Link: "View details",
+    inclusionsEyebrow: "More detail about our services",
+    inclusionsTitle: "What we usually review with you in each area.",
+    inclusionsIntro: "This helps you understand more clearly how we support you before you message us or schedule guidance.",
+    inclusion1Title: "Business formation",
+    inclusion1Item1: "Guidance on LLC, S-Corp, and C-Corp.",
+    inclusion1Item2: "Review of your initial documents.",
+    inclusion1Item3: "Licenses, registration, and next steps.",
+    inclusion2Title: "Personal taxes",
+    inclusion2Item1: "Help with SSN or ITIN.",
+    inclusion2Item2: "Review of your documents and current situation.",
+    inclusion2Item3: "Preparation and guidance for filing.",
+    inclusion3Title: "Business taxes",
+    inclusion3Item1: "Organization of tax obligations.",
+    inclusion3Item2: "Review of deadlines, reports, and compliance.",
+    inclusion3Item3: "Support so you can move forward with more order.",
+    inclusion4Title: "Bookkeeping and payroll",
+    inclusion4Item1: "Monthly follow-up on income and expenses.",
+    inclusion4Item2: "Support with payroll, sales tax, and reports.",
+    inclusion4Item3: "Better preparation for tax season.",
     authorityEyebrow: "Why people trust us",
     authorityTitle: "Because it feels different when someone explains things clearly and truly stays with you through the process.",
     authority1Title: "Clearer answers",
@@ -71,8 +86,7 @@ const translations = {
     processEyebrow: "How we work",
     processTitle: "A simple process so you know what to do from the very first message.",
     process1Title: "We hear your case",
-    process1Text:
-      "We learn about your situation, your priorities, and what needs attention first.",
+    process1Text: "We learn about your situation, your priorities, and what needs attention first.",
     process2Title: "We organize the plan",
     process2Text: "We define the right service, the missing documents, and the next best step.",
     process3Title: "We help you move forward",
@@ -80,22 +94,25 @@ const translations = {
     faqEyebrow: "Frequently asked questions",
     faqTitle: "What people usually ask us before getting started.",
     faq1Question: "Which business structure fits me best: LLC, S-Corp, or C-Corp?",
-    faq1Answer:
-      "It depends on your activity, income level, location and growth goals. The right structure should fit your tax reality.",
+    faq1Answer: "It depends on your activity, income level, location and growth goals. The right structure should fit your tax reality.",
     faq2Question: "Can I file taxes if I do not have a Social Security Number?",
-    faq2Answer:
-      "In many cases yes, through an ITIN. The important step is preparing your documentation correctly before filing.",
+    faq2Answer: "In many cases yes, through an ITIN. The important step is preparing your documentation correctly before filing.",
     faq3Question: "What if my bookkeeping is behind?",
-    faq3Answer:
-      "It can be organized and rebuilt. The sooner it is cleaned up, the easier it becomes to file well and understand the business.",
+    faq3Answer: "It can be organized and rebuilt. The sooner it is cleaned up, the easier it becomes to file well and understand the business.",
     faq4Question: "Do you also help with payroll and ongoing compliance?",
     faq4Answer: "Yes. We can help guide recurring compliance tasks and payroll-related processes.",
+    faq5Question: "Can I open a business even if I am just getting started?",
+    faq5Answer: "Yes. Starting with a clearer structure from the beginning usually helps you avoid mistakes and later corrections.",
+    faq6Question: "Do you work in English and Spanish?",
+    faq6Answer: "Yes. We can help you in the language that feels more comfortable and explain everything clearly in both.",
+    faq7Question: "What if I have been behind for a while?",
+    faq7Answer: "It can still be organized. The important thing is to review what is pending, prioritize it well, and start with a clear plan.",
+    faq8Question: "How do I know which service I need first?",
+    faq8Answer: "Send us a WhatsApp message or fill out the form. We review your case and guide you toward the best next step.",
     contactEyebrow: "Let's talk",
     contactTitle: "Tell us what you need, and we will help you see the next step more clearly.",
-    contactText:
-      "If you have questions about taxes, bookkeeping, or starting a business, send us a message and we will gladly guide you.",
-    contactNote:
-      "If WhatsApp is easier for you, send us a message there and we will help you understand the next step.",
+    contactText: "If you have questions about taxes, bookkeeping, or starting a business, send us a message and we will gladly guide you.",
+    contactNote: "If WhatsApp is easier for you, send us a message there and we will help you understand the next step.",
     contactReassurance1: "Clear response",
     contactReassurance2: "Bilingual support",
     contactReassurance3: "Practical guidance",
@@ -125,8 +142,7 @@ const translations = {
     mailEmail: "Email",
     mailService: "Service",
     mailMessage: "Message",
-    whatsappMessage:
-      "Hello, I would like more information about your tax services. I need some guidance with my case.",
+    whatsappMessage: "Hello, I would like more information about your tax services. I need some guidance with my case.",
   },
   es: {
     pageTitle: "YC Tax Service Corp | Taxes, Bookkeeping y Apertura de Empresa",
@@ -174,21 +190,36 @@ const translations = {
     servicesIntro:
       "Ya sea que estes empezando, poniendote al dia o buscando mas orden, estamos aqui para ayudarte a avanzar con claridad.",
     service1Title: "Apertura de empresa",
-    service1Text:
-      "Te orientamos para elegir la estructura que mejor encaje con tu actividad y tus metas.",
+    service1Text: "Te orientamos para elegir la estructura que mejor encaje con tu actividad y tus metas.",
     service1Link: "Ver detalles",
     service2Title: "Taxes personales",
-    service2Text:
-      "Te ayudamos a revisar tus documentos y preparar tu declaracion con mas seguridad.",
+    service2Text: "Te ayudamos a revisar tus documentos y preparar tu declaracion con mas seguridad.",
     service2Link: "Ver detalles",
     service3Title: "Taxes de negocio",
-    service3Text:
-      "Organizamos la informacion fiscal de tu empresa para que las fechas no se te vengan encima.",
+    service3Text: "Organizamos la informacion fiscal de tu empresa para que las fechas no se te vengan encima.",
     service3Link: "Ver detalles",
     service4Title: "Bookkeeping y payroll",
-    service4Text:
-      "Manten tus numeros mas claros y tu operacion mejor organizada mes a mes.",
+    service4Text: "Manten tus numeros mas claros y tu operacion mejor organizada mes a mes.",
     service4Link: "Ver detalles",
+    inclusionsEyebrow: "Mas detalle sobre nuestros servicios",
+    inclusionsTitle: "Lo que normalmente revisamos contigo en cada area.",
+    inclusionsIntro: "Asi puedes entender mejor en que te apoyamos antes de escribirnos o agendar una orientacion.",
+    inclusion1Title: "Apertura de empresa",
+    inclusion1Item1: "Orientacion sobre LLC, S-Corp y C-Corp.",
+    inclusion1Item2: "Revision de documentos iniciales.",
+    inclusion1Item3: "Licencias, registro y siguientes pasos.",
+    inclusion2Title: "Taxes personales",
+    inclusion2Item1: "Ayuda con SSN o ITIN.",
+    inclusion2Item2: "Revision de documentos y situacion actual.",
+    inclusion2Item3: "Preparacion y orientacion para presentar.",
+    inclusion3Title: "Taxes de negocio",
+    inclusion3Item1: "Organizacion de obligaciones fiscales.",
+    inclusion3Item2: "Revision de fechas, reportes y cumplimiento.",
+    inclusion3Item3: "Acompanamiento para avanzar con mas orden.",
+    inclusion4Title: "Bookkeeping y payroll",
+    inclusion4Item1: "Seguimiento mensual de ingresos y egresos.",
+    inclusion4Item2: "Apoyo con payroll, sales tax y reportes.",
+    inclusion4Item3: "Mejor preparacion para tax season.",
     authorityEyebrow: "Por que confian en nosotros",
     authorityTitle: "Porque se siente diferente cuando alguien te explica bien las cosas y de verdad te acompana.",
     authority1Title: "Todo mas claro",
@@ -200,8 +231,7 @@ const translations = {
     processEyebrow: "Como trabajamos",
     processTitle: "Un proceso simple para que sepas que hacer desde el primer contacto.",
     process1Title: "Escuchamos tu caso",
-    process1Text:
-      "Entendemos tu situacion, tus prioridades y lo que necesitas resolver primero.",
+    process1Text: "Entendemos tu situacion, tus prioridades y lo que necesitas resolver primero.",
     process2Title: "Organizamos el plan",
     process2Text: "Definimos el servicio adecuado, los documentos que faltan y el siguiente paso.",
     process3Title: "Te ayudamos a avanzar",
@@ -209,22 +239,25 @@ const translations = {
     faqEyebrow: "Preguntas frecuentes",
     faqTitle: "Lo que mas nos preguntan antes de empezar.",
     faq1Question: "Que tipo de empresa me conviene mas: LLC, S-Corp o C-Corp?",
-    faq1Answer:
-      "Depende de tu actividad, nivel de ingresos, ubicacion y metas de crecimiento. La estructura correcta debe ajustarse a tu realidad fiscal.",
+    faq1Answer: "Depende de tu actividad, nivel de ingresos, ubicacion y metas de crecimiento. La estructura correcta debe ajustarse a tu realidad fiscal.",
     faq2Question: "Puedo declarar taxes si no tengo Social Security Number?",
-    faq2Answer:
-      "En muchos casos si, mediante ITIN. El paso importante es preparar bien tu documentacion antes de presentar.",
+    faq2Answer: "En muchos casos si, mediante ITIN. El paso importante es preparar bien tu documentacion antes de presentar.",
     faq3Question: "Que pasa si llevo el bookkeeping atrasado?",
-    faq3Answer:
-      "Se puede ordenar y reconstruir. Cuanto antes se limpie, mas facil sera declarar bien y entender el negocio.",
+    faq3Answer: "Se puede ordenar y reconstruir. Cuanto antes se limpie, mas facil sera declarar bien y entender el negocio.",
     faq4Question: "Tambien ayudan con payroll y otros temas recurrentes?",
     faq4Answer: "Si. Podemos ayudar a guiar tareas recurrentes de cumplimiento y procesos relacionados con payroll.",
+    faq5Question: "Puedo abrir una empresa aunque apenas estoy comenzando?",
+    faq5Answer: "Si. De hecho, empezar con una estructura mas clara desde el inicio suele evitar errores y correcciones despues.",
+    faq6Question: "Atienden en ingles y espanol?",
+    faq6Answer: "Si. Podemos atenderte en el idioma con el que te sientas mas comodo y darte orientacion clara en ambos.",
+    faq7Question: "Que pasa si llevo tiempo sin ponerme al dia?",
+    faq7Answer: "Todavia se puede organizar. Lo importante es revisar lo pendiente, priorizarlo bien y empezar con un plan claro.",
+    faq8Question: "Como se cual servicio necesito primero?",
+    faq8Answer: "Escribenos por WhatsApp o por el formulario. Revisamos tu caso y te orientamos sobre el mejor siguiente paso.",
     contactEyebrow: "Hablemos",
     contactTitle: "Cuentanos que necesitas y te ayudamos a ver claro cual es el siguiente paso.",
-    contactText:
-      "Si tienes dudas sobre taxes, bookkeeping o apertura de empresa, mandanos un mensaje y con gusto te orientamos.",
-    contactNote:
-      "Si prefieres escribir primero por WhatsApp, te respondemos para ayudarte a ubicar el siguiente paso.",
+    contactText: "Si tienes dudas sobre taxes, bookkeeping o apertura de empresa, mandanos un mensaje y con gusto te orientamos.",
+    contactNote: "Si prefieres escribir primero por WhatsApp, te respondemos para ayudarte a ubicar el siguiente paso.",
     contactReassurance1: "Respuesta clara",
     contactReassurance2: "Atencion bilingue",
     contactReassurance3: "Orientacion practica",
@@ -254,8 +287,7 @@ const translations = {
     mailEmail: "Email",
     mailService: "Servicio",
     mailMessage: "Mensaje",
-    whatsappMessage:
-      "Hola, quisiera mas informacion sobre sus servicios. Necesito orientacion con mi caso.",
+    whatsappMessage: "Hola, quisiera mas informacion sobre sus servicios. Necesito orientacion con mi caso.",
   },
 };
 
@@ -316,11 +348,15 @@ function setTextContent(language) {
     }
   });
 
-  if (contactForm) {
-    const submitButton = contactForm.querySelector('button[type="submit"]');
-    if (submitButton && !contactForm.classList.contains("is-submitting")) {
-      submitButton.textContent = dictionary.formButton;
-    }
+  const select = contactForm?.querySelector('select[name="service"]');
+  if (select) {
+    const options = Array.from(select.options);
+    options.forEach((option) => {
+      const key = option.dataset.i18n;
+      if (key && dictionary[key] !== undefined) {
+        option.textContent = dictionary[key];
+      }
+    });
   }
 
   if (contactForm) {
@@ -347,6 +383,34 @@ function applyLanguage(language, persist = true) {
 
   if (persist) {
     localStorage.setItem("yc-tax-language", language);
+  }
+}
+
+function buildMailtoLink(dictionary, formData, serviceLabel) {
+  const subject = encodeURIComponent(`${dictionary.mailSubjectPrefix} - ${serviceLabel}`);
+  const body = encodeURIComponent(
+    [
+      `${dictionary.mailName}: ${formData.get("name")}`,
+      `${dictionary.mailEmail}: ${formData.get("email")}`,
+      `${dictionary.mailService}: ${serviceLabel}`,
+      "",
+      `${dictionary.mailMessage}:`,
+      formData.get("message"),
+    ].join("\n")
+  );
+
+  return `mailto:yctaxservicecorp@gmail.com?subject=${subject}&body=${body}`;
+}
+
+function setFormStatus(message, state = "") {
+  if (!formStatus) {
+    return;
+  }
+
+  formStatus.textContent = message;
+  formStatus.classList.remove("is-success", "is-error");
+  if (state) {
+    formStatus.classList.add(state);
   }
 }
 
@@ -394,34 +458,6 @@ faqItems.forEach((item) => {
       const entryButton = entry.querySelector(".faq-question");
       if (entryButton) {
         entryButton.setAttribute("aria-expanded", "false");
-
-    function buildMailtoLink(dictionary, formData, serviceLabel) {
-      const subject = encodeURIComponent(`${dictionary.mailSubjectPrefix} - ${serviceLabel}`);
-      const body = encodeURIComponent(
-        [
-          `${dictionary.mailName}: ${formData.get("name")}`,
-          `${dictionary.mailEmail}: ${formData.get("email")}`,
-          `${dictionary.mailService}: ${serviceLabel}`,
-          "",
-          `${dictionary.mailMessage}:`,
-          formData.get("message"),
-        ].join("\n")
-      );
-
-      return `mailto:yctaxservicecorp@gmail.com?subject=${subject}&body=${body}`;
-    }
-
-    function setFormStatus(message, state = "") {
-      if (!formStatus) {
-        return;
-      }
-
-      formStatus.textContent = message;
-      formStatus.classList.remove("is-success", "is-error");
-      if (state) {
-        formStatus.classList.add(state);
-      }
-    }
       }
     });
 
@@ -430,51 +466,18 @@ faqItems.forEach((item) => {
       button.setAttribute("aria-expanded", "true");
     }
   });
-        const submitButton = contactForm.querySelector('button[type="submit"]');
-        const fallbackMailto = buildMailtoLink(dictionary, formData, serviceLabel);
+});
 
-        contactForm.classList.add("is-submitting");
-        if (submitButton) {
-          submitButton.textContent = dictionary.formButtonSending;
-        }
-        setFormStatus("");
-
-        fetch(formSubmitEndpoint, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-          },
-          body: JSON.stringify({
-            name: formData.get("name"),
-            email: formData.get("email"),
-            service: serviceLabel,
-            message: formData.get("message"),
-            language: currentLanguage,
-            _subject: `${dictionary.mailSubjectPrefix} - ${serviceLabel}`,
-            _captcha: "false",
-          }),
-        })
-          .then((response) => {
-            if (!response.ok) {
-              throw new Error("Form request failed");
-            }
-            return response.json();
-          })
-          .then(() => {
-            contactForm.reset();
-            setFormStatus(dictionary.formStatusSuccess, "is-success");
-          })
-          .catch(() => {
-            setFormStatus(dictionary.formStatusError, "is-error");
-            window.location.href = fallbackMailto;
-          })
-          .finally(() => {
-            contactForm.classList.remove("is-submitting");
-            if (submitButton) {
-              submitButton.textContent = dictionary.formButton;
-            }
-          });
+const revealObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-visible");
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  },
+  { threshold: 0.16 }
 );
 
 revealItems.forEach((item) => {
@@ -482,34 +485,6 @@ revealItems.forEach((item) => {
     revealObserver.observe(item);
   }
 });
-
-function buildMailtoLink(dictionary, formData, serviceLabel) {
-  const subject = encodeURIComponent(`${dictionary.mailSubjectPrefix} - ${serviceLabel}`);
-  const body = encodeURIComponent(
-    [
-      `${dictionary.mailName}: ${formData.get("name")}`,
-      `${dictionary.mailEmail}: ${formData.get("email")}`,
-      `${dictionary.mailService}: ${serviceLabel}`,
-      "",
-      `${dictionary.mailMessage}:`,
-      formData.get("message"),
-    ].join("\n")
-  );
-
-  return `mailto:yctaxservicecorp@gmail.com?subject=${subject}&body=${body}`;
-}
-
-function setFormStatus(message, state = "") {
-  if (!formStatus) {
-    return;
-  }
-
-  formStatus.textContent = message;
-  formStatus.classList.remove("is-success", "is-error");
-  if (state) {
-    formStatus.classList.add(state);
-  }
-}
 
 if (contactForm) {
   contactForm.addEventListener("submit", (event) => {
