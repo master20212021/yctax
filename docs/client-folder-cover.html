@@ -46,7 +46,8 @@
 
       button,
       input,
-      textarea {
+      textarea,
+      select {
         font: inherit;
       }
 
@@ -172,6 +173,7 @@
 
       input[type="text"],
       input[type="date"],
+      select,
       textarea {
         width: 100%;
         padding: 14px 15px;
@@ -183,10 +185,42 @@
 
       input[type="text"]:focus,
       input[type="date"]:focus,
+      select:focus,
       textarea:focus {
         outline: none;
         border-color: var(--gold);
         box-shadow: 0 0 0 3px rgba(179, 143, 72, 0.12);
+      }
+
+      select {
+        appearance: none;
+        background-image:
+          linear-gradient(45deg, transparent 50%, var(--gold-deep) 50%),
+          linear-gradient(135deg, var(--gold-deep) 50%, transparent 50%);
+        background-position:
+          calc(100% - 22px) calc(50% - 2px),
+          calc(100% - 16px) calc(50% - 2px);
+        background-size: 6px 6px, 6px 6px;
+        background-repeat: no-repeat;
+        cursor: pointer;
+      }
+
+      input[type="date"] {
+        cursor: pointer;
+        color-scheme: light;
+      }
+
+      input[type="date"]::-webkit-calendar-picker-indicator {
+        cursor: pointer;
+        opacity: 0.9;
+        filter: sepia(1) saturate(1.6) hue-rotate(5deg);
+      }
+
+      .field-note {
+        margin: -2px 0 0;
+        color: var(--muted);
+        font-size: 0.78rem;
+        font-weight: 600;
       }
 
       textarea {
@@ -605,11 +639,13 @@
               </label>
               <label class="field">
                 <span>Año fiscal</span>
-                <input type="text" data-sync-target="taxYear" data-required="true" placeholder="2025" />
+                <select data-sync-target="taxYear" data-required="true" data-tax-year-select></select>
+                <small class="field-note">Selecciona el año correspondiente al expediente.</small>
               </label>
               <label class="field">
                 <span>Fecha</span>
-                <input type="date" data-sync-target="date" data-required="true" />
+                <input type="date" data-sync-target="date" data-required="true" data-date-input />
+                <small class="field-note">Se completa con la fecha de hoy, pero puedes cambiarla.</small>
               </label>
               <label class="field">
                 <span>Preparado por</span>
@@ -734,10 +770,34 @@
         const textInputs = document.querySelectorAll('[data-sync-target]');
         const docOptions = document.querySelectorAll('[data-document-option]');
         const customDocuments = document.querySelector('[data-custom-documents]');
+        const dateInput = document.querySelector('[data-date-input]');
+        const taxYearSelect = document.querySelector('[data-tax-year-select]');
         const printButton = document.querySelector('[data-print-cover]');
         const resetButton = document.querySelector('[data-reset-cover]');
         const statusMessage = document.querySelector('[data-status-message]');
         const documentList = document.querySelector('[data-document-list]');
+
+        function getTodayIso() {
+          const today = new Date();
+          const offset = today.getTimezoneOffset();
+          const localDate = new Date(today.getTime() - offset * 60000);
+          return localDate.toISOString().slice(0, 10);
+        }
+
+        function populateTaxYearOptions() {
+          const currentYear = new Date().getFullYear();
+          const fragment = document.createDocumentFragment();
+
+          for (let year = currentYear + 1; year >= currentYear - 10; year -= 1) {
+            const option = document.createElement('option');
+            option.value = String(year);
+            option.textContent = String(year);
+            fragment.appendChild(option);
+          }
+
+          taxYearSelect.appendChild(fragment);
+          taxYearSelect.value = String(currentYear);
+        }
 
         function formatDisplayValue(targetId, value) {
           if (targetId !== 'date' || !value.trim()) {
@@ -835,6 +895,11 @@
           syncValue(input.dataset.syncTarget, input.value);
         });
 
+        populateTaxYearOptions();
+        dateInput.value = getTodayIso();
+        syncValue('taxYear', taxYearSelect.value);
+        syncValue('date', dateInput.value);
+
         docOptions.forEach((option) => {
           option.addEventListener('change', syncDocuments);
         });
@@ -843,9 +908,18 @@
 
         resetButton.addEventListener('click', () => {
           textInputs.forEach((input) => {
-            input.value = '';
+            if (input === taxYearSelect) {
+              input.value = String(new Date().getFullYear());
+            } else if (input === dateInput) {
+              input.value = getTodayIso();
+            } else {
+              input.value = '';
+            }
             syncValue(input.dataset.syncTarget, '');
           });
+
+          syncValue('taxYear', taxYearSelect.value);
+          syncValue('date', dateInput.value);
 
           docOptions.forEach((option) => {
             option.checked = false;
