@@ -2095,3 +2095,89 @@ textarea {
     box-shadow: none;
   }
 }
+
+.print-cover-card {
+  position: relative;
+}
+
+.print-brand-lockup-centered {
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  gap: 14px;
+}
+
+.print-brand-logo-shell {
+  width: 72px;
+  height: 72px;
+  padding: 8px;
+  border-radius: 20px;
+}
+
+.print-cover-header {
+  justify-content: center;
+}
+
+.print-cover-hero {
+  margin-top: 26px;
+  max-width: 100%;
+  text-align: center;
+}
+
+.print-cover-title-minimal {
+  max-width: 12ch;
+  margin: 10px auto 0;
+}
+
+.print-cover-accent-row {
+  margin-top: 28px;
+}
+
+.print-accent-card {
+  min-height: 120px;
+}
+
+.print-corner {
+  position: absolute;
+  width: 42px;
+  height: 42px;
+  border-color: rgba(157, 124, 63, 0.5);
+  border-style: solid;
+  pointer-events: none;
+}
+
+.print-corner-top-left {
+  top: 22px;
+  left: 22px;
+  border-width: 2px 0 0 2px;
+  border-top-left-radius: 10px;
+}
+
+.print-corner-top-right {
+  top: 22px;
+  right: 22px;
+  border-width: 2px 2px 0 0;
+  border-top-right-radius: 10px;
+}
+
+.print-corner-bottom-left {
+  bottom: 22px;
+  left: 22px;
+  border-width: 0 0 2px 2px;
+  border-bottom-left-radius: 10px;
+}
+
+.print-corner-bottom-right {
+  right: 22px;
+  bottom: 22px;
+  border-width: 0 2px 2px 0;
+  border-bottom-right-radius: 10px;
+}
+
+@media (max-width: 760px) {
+  .print-corner {
+    width: 28px;
+    height: 28px;
+  }
+}
