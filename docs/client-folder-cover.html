@@ -4,46 +4,809 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>YC Tax Service Corp | Client Folder Cover</title>
-    <meta name="description" content="Portada temporalmente eliminada." />
+    <meta
+      name="description"
+      content="Portada premium imprimible para carpetas de clientes de YC Tax Service Corp."
+    />
+    <link rel="icon" href="logo-removebg-preview.png" type="image/png" />
+    <link rel="shortcut icon" href="logo-removebg-preview.png" type="image/png" />
+    <link rel="apple-touch-icon" href="logo-removebg-preview.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
     <style>
-      body {
-        margin: 0;
-        min-height: 100vh;
-        display: grid;
-        place-items: center;
-        font-family: Arial, sans-serif;
-        background: #ffffff;
-        color: #2d2a26;
+      :root {
+        --bg: #f5f1e8;
+        --bg-soft: #fcfaf5;
+        --card: rgba(255, 252, 246, 0.9);
+        --line: rgba(179, 143, 72, 0.22);
+        --line-strong: rgba(179, 143, 72, 0.38);
+        --gold: #b38f48;
+        --gold-deep: #8f6d31;
+        --text: #2e2a25;
+        --muted: #6f665c;
+        --shadow: 0 20px 50px rgba(61, 48, 27, 0.08);
       }
 
-      .notice {
-        max-width: 520px;
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Manrope", sans-serif;
+        color: var(--text);
+        background:
+          radial-gradient(circle at top, rgba(179, 143, 72, 0.12), transparent 28%),
+          linear-gradient(180deg, #fbf8f1 0%, #f1ebdf 100%);
+      }
+
+      button,
+      input,
+      textarea {
+        font: inherit;
+      }
+
+      .page {
+        width: min(1280px, calc(100% - 28px));
+        margin: 0 auto;
+        padding: 24px 0 36px;
+      }
+
+      .builder-shell {
+        display: grid;
+        grid-template-columns: minmax(320px, 430px) minmax(0, 1fr);
+        gap: 22px;
+        align-items: start;
+      }
+
+      .panel,
+      .preview-shell {
+        border: 1px solid var(--line);
+        border-radius: 30px;
+        background: var(--card);
+        box-shadow: var(--shadow);
+      }
+
+      .panel {
+        position: sticky;
+        top: 20px;
         padding: 24px;
+        backdrop-filter: blur(14px);
+      }
+
+      .panel h1 {
+        margin: 0;
+        font-family: "Playfair Display", serif;
+        font-size: 2.35rem;
+        line-height: 0.98;
+      }
+
+      .panel-copy {
+        margin: 12px 0 0;
+        color: var(--muted);
+        line-height: 1.65;
+      }
+
+      .toolbar {
+        display: flex;
+        gap: 12px;
+        margin-top: 18px;
+        flex-wrap: wrap;
+      }
+
+      .toolbar button {
+        min-height: 48px;
+        padding: 0 18px;
+        border: 0;
+        border-radius: 999px;
+        font-weight: 800;
+        cursor: pointer;
+      }
+
+      .toolbar .print-button {
+        background: linear-gradient(135deg, var(--gold), var(--gold-deep));
+        color: #fff;
+      }
+
+      .toolbar .reset-button {
+        background: #fff;
+        color: var(--text);
+        border: 1px solid var(--line);
+      }
+
+      .status {
+        min-height: 24px;
+        margin: 14px 0 0;
+        color: var(--muted);
+        font-size: 0.94rem;
+        font-weight: 700;
+      }
+
+      .status.is-ready {
+        color: #0f7f4d;
+      }
+
+      .field-section {
+        margin-top: 22px;
+        padding-top: 18px;
+        border-top: 1px solid rgba(179, 143, 72, 0.14);
+      }
+
+      .field-section:first-of-type {
+        margin-top: 20px;
+      }
+
+      .field-label {
+        margin: 0 0 12px;
+        color: var(--gold-deep);
+        font-size: 0.76rem;
+        font-weight: 800;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .field-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .field-grid.single {
+        grid-template-columns: 1fr;
+      }
+
+      label.field {
+        display: grid;
+        gap: 8px;
+        font-size: 0.94rem;
+        font-weight: 700;
+      }
+
+      label.field span {
+        color: var(--text);
+      }
+
+      input[type="text"],
+      textarea {
+        width: 100%;
+        padding: 14px 15px;
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        background: #fff;
+        color: var(--text);
+      }
+
+      input[type="text"]:focus,
+      textarea:focus {
+        outline: none;
+        border-color: var(--gold);
+        box-shadow: 0 0 0 3px rgba(179, 143, 72, 0.12);
+      }
+
+      textarea {
+        min-height: 108px;
+        resize: vertical;
+      }
+
+      .doc-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .doc-option {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        min-height: 54px;
+        padding: 12px 14px;
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.84);
+        font-size: 0.92rem;
+        font-weight: 700;
+      }
+
+      .doc-option input {
+        width: 18px;
+        height: 18px;
+        margin: 0;
+        accent-color: var(--gold-deep);
+      }
+
+      .preview-shell {
+        padding: 24px;
+      }
+
+      .preview-frame {
+        position: relative;
+        width: min(850px, 100%);
+        min-height: 1070px;
+        margin: 0 auto;
+        padding: 54px 58px 44px;
+        border-radius: 22px;
+        border: 1px solid var(--line);
+        background:
+          radial-gradient(circle at top center, rgba(179, 143, 72, 0.1), transparent 24%),
+          linear-gradient(180deg, #fffdfa 0%, #f8f2e7 100%);
+        overflow: hidden;
+      }
+
+      .preview-frame::before,
+      .preview-frame::after,
+      .corner-a,
+      .corner-b {
+        content: "";
+        position: absolute;
+        width: 52px;
+        height: 52px;
+        border-color: rgba(179, 143, 72, 0.44);
+        border-style: solid;
+      }
+
+      .preview-frame::before {
+        top: 24px;
+        left: 24px;
+        border-width: 2px 0 0 2px;
+        border-top-left-radius: 12px;
+      }
+
+      .preview-frame::after {
+        top: 24px;
+        right: 24px;
+        border-width: 2px 2px 0 0;
+        border-top-right-radius: 12px;
+      }
+
+      .corner-a {
+        bottom: 24px;
+        left: 24px;
+        border-width: 0 0 2px 2px;
+        border-bottom-left-radius: 12px;
+      }
+
+      .corner-b {
+        right: 24px;
+        bottom: 24px;
+        border-width: 0 2px 2px 0;
+        border-bottom-right-radius: 12px;
+      }
+
+      .brand-block {
+        display: grid;
+        justify-items: center;
+        gap: 12px;
+        margin-top: 8px;
+      }
+
+      .brand-logo-shell {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 74px;
+        height: 74px;
+        padding: 8px;
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.88);
+        border: 1px solid rgba(179, 143, 72, 0.22);
+        box-shadow: 0 12px 30px rgba(68, 52, 31, 0.08);
+      }
+
+      .brand-logo-shell img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+
+      .brand-caption {
+        margin: 0;
+        color: var(--gold-deep);
+        font-family: "Playfair Display", serif;
+        font-size: 1.9rem;
+        letter-spacing: 0.03em;
+      }
+
+      .hero-block {
+        margin-top: 54px;
         text-align: center;
       }
 
-      .notice h1 {
-        margin: 0 0 12px;
-        font-size: 1.4rem;
+      .hero-kicker {
+        margin: 0;
+        color: var(--gold-deep);
+        font-size: 0.78rem;
+        font-weight: 800;
+        letter-spacing: 0.24em;
+        text-transform: uppercase;
       }
 
-      .notice p {
+      .client-name {
+        margin: 18px 0 0;
+        font-family: "Playfair Display", serif;
+        font-size: clamp(2.9rem, 5vw, 4.2rem);
+        line-height: 1;
+        color: var(--text);
+      }
+
+      .client-meta {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 18px;
+        padding: 12px 20px;
+        border-radius: 999px;
+        border: 1px solid rgba(179, 143, 72, 0.18);
+        background: rgba(255, 255, 255, 0.74);
+      }
+
+      .client-meta span,
+      .client-meta p {
         margin: 0;
+      }
+
+      .client-meta p {
+        color: var(--gold-deep);
+        font-weight: 800;
+        letter-spacing: 0.06em;
+      }
+
+      .client-meta .dot {
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: rgba(143, 109, 49, 0.55);
+      }
+
+      .detail-card,
+      .documents-card,
+      .footer-card {
+        border: 1px solid rgba(179, 143, 72, 0.14);
+        border-radius: 22px;
+        background: rgba(255, 255, 255, 0.72);
+      }
+
+      .detail-card {
+        width: min(520px, 100%);
+        margin: 34px auto 0;
+        padding: 22px 24px;
+      }
+
+      .detail-stack {
+        display: grid;
+        gap: 14px;
+      }
+
+      .detail-row {
+        text-align: center;
+      }
+
+      .detail-row .label {
+        display: block;
+        margin-bottom: 6px;
+        color: var(--gold-deep);
+        font-size: 0.72rem;
+        font-weight: 800;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .detail-row .value {
+        display: block;
+        font-size: 1.08rem;
+        font-weight: 800;
+      }
+
+      .documents-card {
+        width: min(680px, 100%);
+        margin: 30px auto 0;
+        padding: 22px 24px;
+      }
+
+      .card-title {
+        margin: 0 0 14px;
+        color: var(--gold-deep);
+        font-size: 0.78rem;
+        font-weight: 800;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        text-align: center;
+      }
+
+      .document-list {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px 16px;
+      }
+
+      .document-list li {
+        position: relative;
+        padding-left: 22px;
         line-height: 1.6;
-        color: #6d655a;
+        font-weight: 600;
+      }
+
+      .document-list li::before {
+        content: "";
+        position: absolute;
+        top: 8px;
+        left: 0;
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--gold), var(--gold-deep));
+      }
+
+      .footer-card {
+        width: min(360px, 100%);
+        margin: 34px auto 0;
+        padding: 16px 18px;
+        text-align: center;
+      }
+
+      .footer-card p {
+        margin: 0;
+        color: var(--gold-deep);
+        font-size: 0.8rem;
+        font-weight: 800;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
+      .is-hidden {
+        display: none !important;
+      }
+
+      .is-empty {
+        color: transparent !important;
+      }
+
+      @page {
+        size: Letter;
+        margin: 0.45in;
+      }
+
+      @media (max-width: 1020px) {
+        .builder-shell {
+          grid-template-columns: 1fr;
+        }
+
+        .panel {
+          position: static;
+        }
+      }
+
+      @media (max-width: 720px) {
+        .page {
+          width: min(100% - 18px, 1280px);
+        }
+
+        .panel,
+        .preview-shell {
+          border-radius: 24px;
+        }
+
+        .field-grid,
+        .doc-grid,
+        .document-list {
+          grid-template-columns: 1fr;
+        }
+
+        .preview-frame {
+          min-height: auto;
+          padding: 40px 24px 28px;
+        }
+
+        .client-meta {
+          border-radius: 24px;
+        }
       }
 
       @media print {
-        .notice {
-          display: none;
+        body {
+          background: #fff;
+        }
+
+        .page {
+          width: 100%;
+          margin: 0;
+          padding: 0;
+        }
+
+        .panel,
+        .screen-only {
+          display: none !important;
+        }
+
+        .preview-shell {
+          border: 0;
+          box-shadow: none;
+          background: transparent;
+          padding: 0;
+        }
+
+        .preview-frame {
+          width: 100%;
+          min-height: auto;
+          margin: 0;
+          box-shadow: none;
+          break-inside: avoid;
         }
       }
     </style>
   </head>
   <body>
-    <main class="notice">
-      <h1>Portada eliminada temporalmente</h1>
-      <p>Esperando confirmación para crear una nueva versión desde cero.</p>
+    <main class="page">
+      <div class="builder-shell">
+        <aside class="panel screen-only">
+          <h1>Portada del cliente</h1>
+          <p class="panel-copy">
+            Llena los datos una sola vez. La vista previa de la derecha se actualiza al instante y queda lista para imprimirse en una sola hoja.
+          </p>
+
+          <div class="toolbar">
+            <button class="print-button" type="button" data-print-cover disabled>Completa los datos para imprimir</button>
+            <button class="reset-button" type="button" data-reset-cover>Limpiar</button>
+          </div>
+          <p class="status" data-status-message>Faltan datos obligatorios: nombre del cliente, año fiscal y fecha.</p>
+
+          <section class="field-section">
+            <p class="field-label">Datos principales</p>
+            <div class="field-grid">
+              <label class="field">
+                <span>Nombre del cliente</span>
+                <input type="text" data-sync-target="clientName" data-required="true" placeholder="Ej. Maria Rodriguez" />
+              </label>
+              <label class="field">
+                <span>Año fiscal</span>
+                <input type="text" data-sync-target="taxYear" data-required="true" placeholder="2025" />
+              </label>
+              <label class="field">
+                <span>Fecha</span>
+                <input type="text" data-sync-target="date" data-required="true" placeholder="03/07/2026" />
+              </label>
+              <label class="field">
+                <span>Preparado por</span>
+                <input type="text" data-sync-target="preparedBy" placeholder="Yazmin Castro" />
+              </label>
+              <label class="field">
+                <span>Tipo de expediente</span>
+                <input type="text" data-sync-target="fileType" placeholder="Tax Return Package" />
+              </label>
+              <label class="field">
+                <span>Referencia interna</span>
+                <input type="text" data-sync-target="reference" placeholder="Client ID o código interno" />
+              </label>
+            </div>
+          </section>
+
+          <section class="field-section">
+            <p class="field-label">Documentos incluidos</p>
+            <div class="doc-grid">
+              <label class="doc-option">
+                <input type="checkbox" value="Federal tax return" data-document-option />
+                <span>Federal tax return</span>
+              </label>
+              <label class="doc-option">
+                <input type="checkbox" value="State tax return" data-document-option />
+                <span>State tax return</span>
+              </label>
+              <label class="doc-option">
+                <input type="checkbox" value="W-2 / 1099 copies" data-document-option />
+                <span>W-2 / 1099 copies</span>
+              </label>
+              <label class="doc-option">
+                <input type="checkbox" value="Supporting documents" data-document-option />
+                <span>Supporting documents</span>
+              </label>
+              <label class="doc-option">
+                <input type="checkbox" value="ITIN documents" data-document-option />
+                <span>ITIN documents</span>
+              </label>
+              <label class="doc-option">
+                <input type="checkbox" value="Business registration" data-document-option />
+                <span>Business registration</span>
+              </label>
+              <label class="doc-option">
+                <input type="checkbox" value="Bookkeeping summary" data-document-option />
+                <span>Bookkeeping summary</span>
+              </label>
+              <label class="doc-option">
+                <input type="checkbox" value="Payroll records" data-document-option />
+                <span>Payroll records</span>
+              </label>
+            </div>
+
+            <div class="field-grid single" style="margin-top: 14px;">
+              <label class="field">
+                <span>Otros documentos</span>
+                <textarea data-custom-documents placeholder="Escribe un documento por línea"></textarea>
+              </label>
+            </div>
+          </section>
+        </aside>
+
+        <section class="preview-shell">
+          <article class="preview-frame">
+            <span class="corner-a"></span>
+            <span class="corner-b"></span>
+
+            <header class="brand-block">
+              <span class="brand-logo-shell">
+                <img src="logo-removebg-preview.png" data-fallback-src="logo.jpg" alt="YC Tax Service Corp logo" />
+              </span>
+              <p class="brand-caption">Tax Service Corp</p>
+            </header>
+
+            <section class="hero-block">
+              <p class="hero-kicker">Private Client Folder</p>
+              <h1 class="client-name editable-target is-empty" data-target-id="clientName" data-default="Client Name">Client Name</h1>
+              <div class="client-meta">
+                <p class="editable-target is-empty" data-target-id="taxYear" data-default="0000">0000</p>
+                <span class="dot"></span>
+                <p class="editable-target is-empty" data-target-id="date" data-default="MM/DD/YYYY">MM/DD/YYYY</p>
+              </div>
+            </section>
+
+            <section class="detail-card is-hidden" data-hide-if-empty="detailSection">
+              <p class="card-title">Client Information</p>
+              <div class="detail-stack">
+                <div class="detail-row is-hidden" data-hide-if-empty="preparedBy">
+                  <span class="label">Prepared by</span>
+                  <span class="value editable-target" data-target-id="preparedBy" data-default=""></span>
+                </div>
+                <div class="detail-row is-hidden" data-hide-if-empty="fileType">
+                  <span class="label">File Type</span>
+                  <span class="value editable-target" data-target-id="fileType" data-default=""></span>
+                </div>
+                <div class="detail-row is-hidden" data-hide-if-empty="reference">
+                  <span class="label">Reference</span>
+                  <span class="value editable-target" data-target-id="reference" data-default=""></span>
+                </div>
+              </div>
+            </section>
+
+            <section class="documents-card is-hidden" data-hide-if-empty="documentsSection">
+              <p class="card-title">Included Documents</p>
+              <ul class="document-list" data-document-list></ul>
+            </section>
+
+            <footer class="footer-card">
+              <p>Private & Confidential</p>
+            </footer>
+          </article>
+        </section>
+      </div>
     </main>
+
+    <script>
+      (function () {
+        const textInputs = document.querySelectorAll('[data-sync-target]');
+        const docOptions = document.querySelectorAll('[data-document-option]');
+        const customDocuments = document.querySelector('[data-custom-documents]');
+        const printButton = document.querySelector('[data-print-cover]');
+        const resetButton = document.querySelector('[data-reset-cover]');
+        const statusMessage = document.querySelector('[data-status-message]');
+        const documentList = document.querySelector('[data-document-list]');
+
+        function syncValue(targetId, value) {
+          const safeValue = value.trim();
+          document.querySelectorAll('[data-target-id="' + targetId + '"]').forEach((target) => {
+            if (safeValue) {
+              target.textContent = safeValue;
+              target.classList.remove('is-empty');
+            } else {
+              target.textContent = target.dataset.default || '';
+              target.classList.add('is-empty');
+            }
+          });
+
+          document.querySelectorAll('[data-hide-if-empty="' + targetId + '"]').forEach((item) => {
+            item.classList.toggle('is-hidden', !safeValue);
+          });
+        }
+
+        function syncDocuments() {
+          const selected = Array.from(docOptions)
+            .filter((option) => option.checked)
+            .map((option) => option.value.trim())
+            .filter(Boolean);
+          const custom = customDocuments.value
+            .split('\n')
+            .map((value) => value.trim())
+            .filter(Boolean);
+          const documents = [...selected, ...custom];
+
+          documentList.innerHTML = '';
+          documents.forEach((item) => {
+            const li = document.createElement('li');
+            li.textContent = item;
+            documentList.appendChild(li);
+          });
+
+          document.querySelectorAll('[data-hide-if-empty="documentsSection"]').forEach((section) => {
+            section.classList.toggle('is-hidden', documents.length === 0);
+          });
+        }
+
+        function syncDetailSection() {
+          const hasDetail = ['preparedBy', 'fileType', 'reference'].some((key) => {
+            const input = document.querySelector('[data-sync-target="' + key + '"]');
+            return input && input.value.trim();
+          });
+
+          document.querySelectorAll('[data-hide-if-empty="detailSection"]').forEach((section) => {
+            section.classList.toggle('is-hidden', !hasDetail);
+          });
+        }
+
+        function updateStatus() {
+          const missing = Array.from(textInputs)
+            .filter((input) => input.dataset.required === 'true' && !input.value.trim())
+            .map((input) => input.previousElementSibling ? input.previousElementSibling.textContent : 'campo obligatorio');
+
+          if (missing.length === 0) {
+            printButton.disabled = false;
+            printButton.textContent = 'Imprimir portada';
+            statusMessage.textContent = 'Todo listo. Ya puedes imprimir esta portada en una sola hoja.';
+            statusMessage.classList.add('is-ready');
+          } else {
+            printButton.disabled = true;
+            printButton.textContent = 'Completa los datos para imprimir';
+            statusMessage.textContent = 'Faltan datos obligatorios: ' + missing.join(', ') + '.';
+            statusMessage.classList.remove('is-ready');
+          }
+        }
+
+        textInputs.forEach((input) => {
+          input.addEventListener('input', () => {
+            syncValue(input.dataset.syncTarget, input.value);
+            syncDetailSection();
+            updateStatus();
+          });
+          syncValue(input.dataset.syncTarget, input.value);
+        });
+
+        docOptions.forEach((option) => {
+          option.addEventListener('change', syncDocuments);
+        });
+
+        customDocuments.addEventListener('input', syncDocuments);
+
+        resetButton.addEventListener('click', () => {
+          textInputs.forEach((input) => {
+            input.value = '';
+            syncValue(input.dataset.syncTarget, '');
+          });
+
+          docOptions.forEach((option) => {
+            option.checked = false;
+          });
+
+          customDocuments.value = '';
+          syncDocuments();
+          syncDetailSection();
+          updateStatus();
+        });
+
+        printButton.addEventListener('click', () => {
+          if (!printButton.disabled) {
+            window.print();
+          }
+        });
+
+        syncDocuments();
+        syncDetailSection();
+        updateStatus();
+      })();
+    </script>
   </body>
 </html>
