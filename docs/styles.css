@@ -865,6 +865,28 @@ textarea {
   color: var(--text);
 }
 
+.site-header,
+.brand-block,
+.brand-copy,
+.header-actions,
+.hero-copy,
+.hero-panel,
+.hero-highlight,
+.section-heading,
+.authority-copy,
+.authority-list,
+.authority-list article,
+.process-section,
+.process-step,
+.faq-item,
+.contact-section > *,
+.contact-cards,
+.contact-cards a,
+.contact-form,
+.service-page-hero > * {
+  min-width: 0;
+}
+
 .mobile-section-dock,
 .section-swipe-hint {
   display: none;
@@ -1772,6 +1794,33 @@ textarea {
   .hero-section {
     gap: 18px;
     padding: 28px 2px 4px;
+  }
+
+  .hero-copy,
+  .hero-panel,
+  .hero-highlight,
+  .signature-strip,
+  .process-section,
+  .faq-item,
+  .contact-section,
+  .contact-copy,
+  .contact-cards,
+  .contact-cards a,
+  .contact-form,
+  .section-heading,
+  .authority-copy,
+  .authority-list article,
+  .process-step {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .contact-copy h2,
+  .section-heading h2,
+  .authority-copy h2,
+  .faq-question,
+  .contact-cards a {
+    overflow-wrap: anywhere;
   }
 
   .hero-proof,
