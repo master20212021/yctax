@@ -18,6 +18,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
@@ -1727,8 +1728,9 @@ textarea {
 
 @media (max-width: 760px) {
   .page-shell {
-    width: calc(100vw - 20px);
+    width: auto;
     max-width: 1180px;
+    margin: 0 10px;
     padding-bottom: 118px;
   }
 
