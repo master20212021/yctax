@@ -602,5 +602,142 @@ if (contactForm) {
   });
 }
 
+function setupMobileRailAutoplay() {
+  const isMobileViewport = window.matchMedia("(max-width: 760px)");
+  const railSelectors = [
+    ".hero-proof",
+    ".panel-grid",
+    ".services-grid",
+    ".inclusions-grid",
+    ".local-trust-grid",
+    ".testimonials-grid",
+    ".process-grid",
+    ".authority-list",
+  ];
+
+  const rails = railSelectors
+    .flatMap((selector) => Array.from(document.querySelectorAll(selector)))
+    .filter((rail) => rail.children.length > 1);
+
+  let activeController = null;
+
+  const stopController = (controller) => {
+    if (!controller?.timerId) {
+      return;
+    }
+
+    window.clearInterval(controller.timerId);
+    controller.timerId = null;
+    controller.rail.dataset.autoPlaying = "false";
+  };
+
+  rails.forEach((rail) => {
+    const cards = Array.from(rail.children).filter((child) => child.nodeType === Node.ELEMENT_NODE);
+    if (cards.length < 2) {
+      return;
+    }
+
+    const controller = {
+      rail,
+      cards,
+      timerId: null,
+      activeIndex: 0,
+    };
+
+    const syncIndexFromScroll = () => {
+      const railLeft = rail.getBoundingClientRect().left;
+      let nearestIndex = 0;
+      let nearestDistance = Number.POSITIVE_INFINITY;
+
+      cards.forEach((card, index) => {
+        const distance = Math.abs(card.getBoundingClientRect().left - railLeft);
+        if (distance < nearestDistance) {
+          nearestDistance = distance;
+          nearestIndex = index;
+        }
+      });
+
+      controller.activeIndex = nearestIndex;
+    };
+
+    const scrollToIndex = (index) => {
+      const normalizedIndex = (index + cards.length) % cards.length;
+      controller.activeIndex = normalizedIndex;
+      rail.dataset.autoPlaying = "true";
+      cards[normalizedIndex].scrollIntoView({ behavior: "smooth", block: "nearest", inline: "start" });
+    };
+
+    const advance = () => {
+      scrollToIndex(controller.activeIndex + 1);
+    };
+
+    const startAutoPlay = (selectedCard) => {
+      if (!isMobileViewport.matches) {
+        return;
+      }
+
+      if (activeController && activeController !== controller) {
+        stopController(activeController);
+      }
+
+      if (selectedCard) {
+        const selectedIndex = cards.indexOf(selectedCard);
+        if (selectedIndex >= 0) {
+          controller.activeIndex = selectedIndex;
+        }
+      } else {
+        syncIndexFromScroll();
+      }
+
+      advance();
+
+      if (controller.timerId) {
+        window.clearInterval(controller.timerId);
+      }
+
+      controller.timerId = window.setInterval(advance, 1000);
+      activeController = controller;
+    };
+
+    rail.addEventListener(
+      "scroll",
+      () => {
+        syncIndexFromScroll();
+      },
+      { passive: true }
+    );
+
+    rail.addEventListener("click", (event) => {
+      const selectedCard = cards.find((card) => card === event.target || card.contains(event.target));
+      if (!selectedCard) {
+        return;
+      }
+
+      startAutoPlay(selectedCard);
+    });
+
+    rail.addEventListener(
+      "touchstart",
+      (event) => {
+        const selectedCard = cards.find((card) => card === event.target || card.contains(event.target));
+        if (!selectedCard) {
+          return;
+        }
+
+        startAutoPlay(selectedCard);
+      },
+      { passive: true }
+    );
+  });
+
+  isMobileViewport.addEventListener("change", (event) => {
+    if (!event.matches && activeController) {
+      stopController(activeController);
+      activeController = null;
+    }
+  });
+}
+
 loadOptionalAnalytics();
 applyLanguage(currentLanguage, false);
+setupMobileRailAutoplay();

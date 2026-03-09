@@ -1899,7 +1899,7 @@ textarea {
     align-items: center;
     gap: 8px;
     margin: 14px 0 0;
-    padding: 8px 12px;
+    padding: 8px 16px;
     border-radius: 999px;
     background: rgba(255, 255, 255, 0.7);
     border: 1px solid rgba(194, 160, 94, 0.16);
@@ -1907,6 +1907,26 @@ textarea {
     font-size: 0.78rem;
     font-weight: 800;
     letter-spacing: 0.02em;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 24px rgba(157, 124, 63, 0.08);
+    animation: swipeHintPulse 1.6s ease-in-out infinite;
+  }
+
+  .section-swipe-hint::before,
+  .section-swipe-hint::after {
+    font-size: 0.95rem;
+    line-height: 1;
+    animation: swipeHintArrow 1s ease-in-out infinite;
+  }
+
+  .section-swipe-hint::before {
+    content: "\2190";
+  }
+
+  .section-swipe-hint::after {
+    content: "\2192";
+    animation-delay: 0.18s;
   }
 
   .mobile-section-dock {
@@ -1942,6 +1962,28 @@ textarea {
     font-weight: 800;
     white-space: nowrap;
     scroll-snap-align: start;
+  }
+
+  @keyframes swipeHintPulse {
+    0%, 100% {
+      transform: translateY(0);
+      box-shadow: 0 10px 24px rgba(157, 124, 63, 0.08);
+    }
+    50% {
+      transform: translateY(-1px);
+      box-shadow: 0 14px 28px rgba(157, 124, 63, 0.14);
+    }
+  }
+
+  @keyframes swipeHintArrow {
+    0%, 100% {
+      transform: translateX(0);
+      opacity: 0.48;
+    }
+    50% {
+      transform: translateX(3px);
+      opacity: 1;
+    }
   }
 
   .floating-whatsapp {
