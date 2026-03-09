@@ -602,142 +602,75 @@ if (contactForm) {
   });
 }
 
-function setupMobileRailAutoplay() {
-  const isMobileViewport = window.matchMedia("(max-width: 760px)");
-  const railSelectors = [
-    ".hero-proof",
-    ".panel-grid",
-    ".services-grid",
-    ".inclusions-grid",
-    ".local-trust-grid",
-    ".testimonials-grid",
-    ".process-grid",
-    ".authority-list",
-  ];
+function setupMobileSectionDock() {
+  const mobileQuery = window.matchMedia("(max-width: 760px)");
+  const dock = document.querySelector(".mobile-section-dock");
 
-  const rails = railSelectors
-    .flatMap((selector) => Array.from(document.querySelectorAll(selector)))
-    .filter((rail) => rail.children.length > 1);
+  if (!dock) {
+    return;
+  }
 
-  let activeController = null;
+  const links = Array.from(dock.querySelectorAll("a[href^='#']"));
+  const targets = links
+    .map((link) => {
+      const target = document.querySelector(link.getAttribute("href"));
+      return target ? { link, target } : null;
+    })
+    .filter(Boolean);
 
-  const stopController = (controller) => {
-    if (!controller?.timerId) {
-      return;
-    }
+  if (!targets.length) {
+    return;
+  }
 
-    window.clearInterval(controller.timerId);
-    controller.timerId = null;
-    controller.rail.dataset.autoPlaying = "false";
-  };
-
-  rails.forEach((rail) => {
-    const cards = Array.from(rail.children).filter((child) => child.nodeType === Node.ELEMENT_NODE);
-    if (cards.length < 2) {
-      return;
-    }
-
-    const controller = {
-      rail,
-      cards,
-      timerId: null,
-      activeIndex: 0,
-    };
-
-    const syncIndexFromScroll = () => {
-      const railLeft = rail.getBoundingClientRect().left;
-      let nearestIndex = 0;
-      let nearestDistance = Number.POSITIVE_INFINITY;
-
-      cards.forEach((card, index) => {
-        const distance = Math.abs(card.getBoundingClientRect().left - railLeft);
-        if (distance < nearestDistance) {
-          nearestDistance = distance;
-          nearestIndex = index;
-        }
-      });
-
-      controller.activeIndex = nearestIndex;
-    };
-
-    const scrollToIndex = (index) => {
-      const normalizedIndex = (index + cards.length) % cards.length;
-      controller.activeIndex = normalizedIndex;
-      rail.dataset.autoPlaying = "true";
-      cards[normalizedIndex].scrollIntoView({ behavior: "smooth", block: "nearest", inline: "start" });
-    };
-
-    const advance = () => {
-      scrollToIndex(controller.activeIndex + 1);
-    };
-
-    const startAutoPlay = (selectedCard) => {
-      if (!isMobileViewport.matches) {
-        return;
-      }
-
-      if (activeController && activeController !== controller) {
-        stopController(activeController);
-      }
-
-      if (selectedCard) {
-        const selectedIndex = cards.indexOf(selectedCard);
-        if (selectedIndex >= 0) {
-          controller.activeIndex = selectedIndex;
-        }
-      } else {
-        syncIndexFromScroll();
-      }
-
-      advance();
-
-      if (controller.timerId) {
-        window.clearInterval(controller.timerId);
-      }
-
-      controller.timerId = window.setInterval(advance, 1000);
-      activeController = controller;
-    };
-
-    rail.addEventListener(
-      "scroll",
-      () => {
-        syncIndexFromScroll();
-      },
-      { passive: true }
-    );
-
-    rail.addEventListener("click", (event) => {
-      const selectedCard = cards.find((card) => card === event.target || card.contains(event.target));
-      if (!selectedCard) {
-        return;
-      }
-
-      startAutoPlay(selectedCard);
+  const setActiveLink = (nextLink) => {
+    links.forEach((link) => {
+      link.classList.toggle("is-active", link === nextLink);
     });
 
-    rail.addEventListener(
-      "touchstart",
-      (event) => {
-        const selectedCard = cards.find((card) => card === event.target || card.contains(event.target));
-        if (!selectedCard) {
-          return;
-        }
+    nextLink.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+  };
 
-        startAutoPlay(selectedCard);
-      },
-      { passive: true }
-    );
-  });
+  let currentActiveLink = links[0];
+  setActiveLink(currentActiveLink);
 
-  isMobileViewport.addEventListener("change", (event) => {
-    if (!event.matches && activeController) {
-      stopController(activeController);
-      activeController = null;
+  const observer = new IntersectionObserver(
+    (entries) => {
+      if (!mobileQuery.matches) {
+        return;
+      }
+
+      const visibleEntries = entries
+        .filter((entry) => entry.isIntersecting)
+        .sort((entryA, entryB) => entryB.intersectionRatio - entryA.intersectionRatio);
+
+      if (!visibleEntries.length) {
+        return;
+      }
+
+      const matched = targets.find(({ target }) => target === visibleEntries[0].target);
+      if (!matched || matched.link === currentActiveLink) {
+        return;
+      }
+
+      currentActiveLink = matched.link;
+      setActiveLink(currentActiveLink);
+    },
+    {
+      threshold: [0.25, 0.45, 0.65],
+      rootMargin: "-12% 0px -48% 0px",
     }
+  );
+
+  targets.forEach(({ target }) => observer.observe(target));
+
+  links.forEach((link) => {
+    link.addEventListener("click", () => {
+      currentActiveLink = link;
+      setActiveLink(link);
+    });
   });
 }
 
 loadOptionalAnalytics();
 applyLanguage(currentLanguage, false);
-setupMobileRailAutoplay();
+setupMobileSectionDock();

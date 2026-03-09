@@ -1899,7 +1899,7 @@ textarea {
     align-items: center;
     gap: 8px;
     margin: 14px 0 0;
-    padding: 8px 16px;
+    padding: 9px 16px;
     border-radius: 999px;
     background: rgba(255, 255, 255, 0.7);
     border: 1px solid rgba(194, 160, 94, 0.16);
@@ -1909,15 +1909,16 @@ textarea {
     letter-spacing: 0.02em;
     position: relative;
     overflow: hidden;
-    box-shadow: 0 10px 24px rgba(157, 124, 63, 0.08);
-    animation: swipeHintPulse 1.6s ease-in-out infinite;
+    box-shadow: 0 10px 26px rgba(157, 124, 63, 0.1);
+    animation: swipeHintHeartbeat 1.55s ease-in-out infinite;
   }
 
   .section-swipe-hint::before,
   .section-swipe-hint::after {
-    font-size: 0.95rem;
+    font-size: 0.96rem;
     line-height: 1;
-    animation: swipeHintArrow 1s ease-in-out infinite;
+    color: var(--gold);
+    animation: swipeHintArrowNudge 0.95s ease-in-out infinite;
   }
 
   .section-swipe-hint::before {
@@ -1945,6 +1946,20 @@ textarea {
     backdrop-filter: blur(18px);
     box-shadow: 0 16px 44px rgba(68, 52, 31, 0.14);
     transform: translateX(-50%);
+    isolation: isolate;
+    animation: dockFloat 3.4s ease-in-out infinite;
+  }
+
+  .mobile-section-dock::before {
+    content: "";
+    position: absolute;
+    inset: 6px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, transparent, rgba(194, 160, 94, 0.08), transparent);
+    transform: translateX(-120%);
+    animation: dockSheen 4.2s ease-in-out infinite;
+    pointer-events: none;
+    z-index: -1;
   }
 
   .mobile-section-dock a {
@@ -1962,27 +1977,61 @@ textarea {
     font-weight: 800;
     white-space: nowrap;
     scroll-snap-align: start;
+    transition: transform 0.24s ease, background 0.24s ease, color 0.24s ease, box-shadow 0.24s ease;
   }
 
-  @keyframes swipeHintPulse {
+  .mobile-section-dock a.is-active {
+    background: linear-gradient(135deg, var(--gold), var(--gold-deep));
+    color: #fff;
+    box-shadow: 0 10px 24px rgba(157, 124, 63, 0.22);
+    transform: translateY(-1px) scale(1.02);
+  }
+
+  @keyframes swipeHintHeartbeat {
     0%, 100% {
-      transform: translateY(0);
-      box-shadow: 0 10px 24px rgba(157, 124, 63, 0.08);
+      transform: scale(1);
+      box-shadow: 0 10px 26px rgba(157, 124, 63, 0.1);
     }
     50% {
-      transform: translateY(-1px);
-      box-shadow: 0 14px 28px rgba(157, 124, 63, 0.14);
+      transform: scale(1.025);
+      box-shadow: 0 14px 32px rgba(157, 124, 63, 0.18);
     }
   }
 
-  @keyframes swipeHintArrow {
+  @keyframes swipeHintArrowNudge {
     0%, 100% {
       transform: translateX(0);
-      opacity: 0.48;
+      opacity: 0.5;
     }
     50% {
       transform: translateX(3px);
       opacity: 1;
+    }
+  }
+
+  @keyframes dockFloat {
+    0%, 100% {
+      transform: translateX(-50%) translateY(0);
+    }
+    50% {
+      transform: translateX(-50%) translateY(-2px);
+    }
+  }
+
+  @keyframes dockSheen {
+    0%, 100% {
+      transform: translateX(-120%);
+      opacity: 0;
+    }
+    20% {
+      opacity: 1;
+    }
+    55% {
+      transform: translateX(120%);
+      opacity: 0.9;
+    }
+    56% {
+      opacity: 0;
     }
   }
 
