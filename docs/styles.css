@@ -1674,11 +1674,23 @@ textarea {
   margin: 0 0 12px;
 }
 
+.legal-meta {
+  margin: 10px 0 0;
+  color: var(--gold-deep);
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+
 .legal-card ul {
   margin: 0;
   padding-left: 18px;
   display: grid;
   gap: 10px;
+}
+
+.legal-card a {
+  color: var(--gold-deep);
+  font-weight: 700;
 }
 
 .floating-whatsapp {
